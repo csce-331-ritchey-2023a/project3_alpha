@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+
+//import screens
+import HomeScreen from './screens/HomeScreen';
+import CustomerScreen from './screens/CustomerScreen';
+import ManagerScreen from './screens/ManagerScreen';
+import ServerScreen from './screens/ServerScreen';
+//import NotFound from './screens/NotFound';
+
+
+// import components
+
+// import libraries
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+
+      <main>
+        <Routes>
+          <Route path="/" element={<HomeScreen/>} />
+          <Route path="/customer" element={<CustomerScreen/>}  />
+          <Route path="/manager" element={<ManagerScreen/>} />
+          <Route path="/server" element={<ServerScreen/>} />
+
+          {/* <Route path="*" element={<NotFound/>}/> add component for wildcard app links */}
+          
+        </Routes>
+      </main>
+
+      {/* <Footer />  create reusable footer component?*/}
+
+    </Router>
   );
 }
 
