@@ -22,15 +22,27 @@ const pool = new Pool({ // make queries using pool
 app.use(cors());
 app.use(express.json());
 
+const foodTables = ["toppings", "cheeses", "drizzles", "sauces", "toppings"]
 
-app.get("/toppings", async (req, res) => { // sample query to get all toppings
-    try {
-      const toppings = await pool.query("SELECT * FROM toppings");
-      res.json(toppings.rows);
-    } catch (err) {
-      console.error(err.message);
+app.get("/:table/", async (req, res) => { // sample query to get all toppings
+  table = req.params.table
+  try {
+    if (foodTables.includes(table)) {
+      const item = await pool.query(`SELECT * FROM ${table}`);
+      res.json(item.rows);
     }
-  });
+    else if(table == "transactions") {
+      const item = await pool.query(`SELECT * FROM ${table}`);
+      res.json(item.rows);
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/drizzles", async (req, res) => {
+
+});
 
 app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
 
