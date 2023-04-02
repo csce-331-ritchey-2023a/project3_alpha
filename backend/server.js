@@ -39,11 +39,16 @@ app.get("/:table/", async (req, res) => { // sample query to get all toppings
     console.error(err.message);
   }
 });
-
-app.get("/drizzles", async (req, res) => {
-
+/*
+app.get("/toppings", async (req, res) => { // sample query to get all toppings
+  try {
+    const toppings = await pool.query("SELECT * FROM toppings");
+    res.json(toppings.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
 });
-
+*/
 app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
 
 

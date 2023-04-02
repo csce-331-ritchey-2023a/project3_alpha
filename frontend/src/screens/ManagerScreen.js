@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import './ManagerScreen.css'
+
+
+//components
+import ListTables from "./components/ListTables";
+
 
 const ManagerScreen = () => {
   return (
-    <div>
-        <h1>Welcome to the manager screen!</h1>
-    </div>
+    <Fragment>
+      <div className = "container">
+        <ListTables />
+      </div>
+    </Fragment>
+    
   )
 }
 
