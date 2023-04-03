@@ -92,7 +92,7 @@ const ListTables = () => {
                             <tr key={topping.topping_id}>
                                 <td>{topping.topping_id}</td>
                                 <td>{topping.amount}</td>
-                                <td>{topping.customer_price}</td>
+                                <td>{Math.round(topping.customer_price*100)/100}</td>
                             </tr>
                         ))} 
                     </tbody>
@@ -113,7 +113,7 @@ const ListTables = () => {
                         {cheeses.map(cheese => (
                             <tr key={cheese.cheeseid}>
                                 <td>{cheese.cheeseid}</td>
-                                <td>{cheese.customerprice}</td>
+                                <td>{Math.round(cheese.customerprice*100)/100}</td>
                                 <td>{cheese.amount}</td>
                             </tr>
                         ))}
@@ -135,7 +135,7 @@ const ListTables = () => {
                         {sauces.map(sauce => (
                             <tr key={sauce.sauceid}>
                                 <td>{sauce.sauceid}</td>
-                                <td>{sauce.customerprice}</td>
+                                <td>{Math.round(sauce.customerprice*100)/100}</td>
                                 <td>{sauce.amount}</td>
                             </tr>
                         ))}
@@ -157,7 +157,7 @@ const ListTables = () => {
                         {drizzles.map(drizzle => (
                             <tr key={drizzle.drizzleid}>
                                 <td>{drizzle.drizzleid}</td>
-                                <td>{drizzle.customerprice}</td>
+                                <td>{Math.round(drizzle.customerprice*100)/100}</td>
                                 <td>{drizzle.amount}</td>
                             </tr>
                         ))}
