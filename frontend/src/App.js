@@ -19,8 +19,8 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<HomeScreen/>} />
-          <Route path="/customer" element={<CustomerScreen/>}  />
+          <Route path="/" element={<CustomerScreen />} />
+          {/* <Route path="/customer" element={<CustomerScreen/>}  /> */}
           <Route path="/manager" element={<ManagerScreen/>} />
           <Route path="/server" element={<ServerScreen/>} />
 

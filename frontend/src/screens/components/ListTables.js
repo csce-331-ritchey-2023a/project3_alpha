@@ -76,7 +76,6 @@ const ListTables = () => {
 
     return <Fragment>
         <div className = "row">
-
             <div className = "col-md-6">
                 <table className="table table-sm mt-5 text-center">
                     <caption className = "table-caption">Toppings</caption>

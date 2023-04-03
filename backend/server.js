@@ -39,6 +39,22 @@ app.get("/:table/", async (req, res) => { // sample query to get all toppings
     console.error(err.message);
   }
 });
+
+app.post("/transaction", async (req, res) => {
+  let price = req.query.pizzatype == "cheese" ? 6.45 :
+              req.query.pizzatype == "1-topping" ? 7.49 : 8.85
+
+  try {
+    console.log(req.query)
+    await pool.query(`INSERT INTO transactions (transactiontime, sauce, cheeses, drizzle, price, topping1, topping2, topping3, topping4)
+    VALUES (${(new Date()).getTime()}, ${req.query.sauce}, ${req.query.cheese}, ${req.query.drizzle}, ${price}, ${req.query.topping1}, ${req.query.topping2}, ${req.query.topping3}, ${req.query.topping4})`)
+    
+    console.log('successfully added!')
+  }
+  catch (err) {
+    console.error(err.message)
+  }
+})
 /*
 app.get("/toppings", async (req, res) => { // sample query to get all toppings
   try {
