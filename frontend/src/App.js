@@ -11,9 +11,16 @@ import ServerScreen from './screens/ServerScreen';
 // import components
 
 // import libraries
+import { useEffect } from 'react';
+
+
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 function App() {
+
+
+
+
   return (
     <Router>
 
