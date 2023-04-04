@@ -10,7 +10,10 @@ const CustomerScreen = () => {
 
   const [order, set_order] = useState({
     "pizza-type": "",
-    "toppings": "", // Use this to handle multiple: https://stackoverflow.com/questions/28624763/retrieving-value-from-select-with-multiple-option-in-react
+    "topping1": "",
+    "topping2": "",
+    "topping3": "",
+    "topping4": "",
     "sauce": "",
     "cheese": "",
     "drizzle": ""
@@ -91,10 +94,10 @@ const CustomerScreen = () => {
         sauce: order.sauce,
         cheese: order.cheese ,
         drizzle: order.drizzle,
-        topping1: order.toppings,
-        topping2: null,
-        topping3: null,
-        topping4: null
+        topping1: order.topping1,
+        topping2: order.topping2,
+        topping3: order.topping3,
+        topping4: order.topping4
       }), {
         method: "POST"
       })
@@ -124,17 +127,6 @@ const CustomerScreen = () => {
           <option value="cheese">Cheese</option>
           <option value="1-topping">1 Topping</option>
           <option value="4-topping">4 Topping</option>
-        </select>
-        <br />
-
-        <label htmlFor="toppings">Choose a topping:</label>
-        <select name="toppings" id="toppings" value={order.toppings} onChange={e => setOrderDetails("toppings", e.target.value)}>
-        <option value="" disabled>Select your option</option>
-          {
-            toppings.map(topping => (
-              <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
-            ))
-          }
         </select>
         <br />
 
@@ -169,6 +161,72 @@ const CustomerScreen = () => {
             ))
           }
         </select>
+        <br />
+
+        {
+          (order['pizza-type'] === "1-topping" || order['pizza-type'] === "4-topping") ? (
+            <>
+              <label htmlFor="toppings">Choose a topping:</label>
+              <select name="toppings" id="toppings" value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
+              <option value="" disabled>Select your option</option>
+                {
+                  toppings.map(topping => (
+                    <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
+                  ))
+                }
+              </select>
+              <br />
+            </>
+          ) : ''
+        }
+        {
+          (order['pizza-type'] === "4-topping") ? (
+            <>
+              <label htmlFor="toppings">Choose a topping:</label>
+              <select name="toppings" id="toppings" value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
+              <option value="" disabled>Select your option</option>
+                {
+                  toppings.map(topping => (
+                    <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
+                  ))
+                }
+              </select>
+              <br />
+            </>
+          ) : ''
+        }
+        {
+          (order['pizza-type'] === "4-topping") ? (
+            <>
+              <label htmlFor="toppings">Choose a topping:</label>
+              <select name="toppings" id="toppings" value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
+              <option value="" disabled>Select your option</option>
+                {
+                  toppings.map(topping => (
+                    <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
+                  ))
+                }
+              </select>
+              <br />
+            </>
+          ) : ''
+        }
+        {
+          (order['pizza-type'] === "4-topping") ? (
+            <>
+              <label htmlFor="toppings">Choose a topping:</label>
+              <select name="toppings" id="toppings" value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
+              <option value="" disabled>Select your option</option>
+                {
+                  toppings.map(topping => (
+                    <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
+                  ))
+                }
+              </select>
+              <br />
+            </>
+          ) : ''
+        }
 
         <h4>Your order details</h4>
         <ul>

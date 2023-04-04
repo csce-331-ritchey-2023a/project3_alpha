@@ -46,8 +46,11 @@ app.post("/transaction", async (req, res) => {
 
   try {
     console.log(req.query)
-    await pool.query(`INSERT INTO transactions (transactiontime, sauce, cheeses, drizzle, price, topping1, topping2, topping3, topping4)
-    VALUES (${(new Date()).getTime()}, ${req.query.sauce}, ${req.query.cheese}, ${req.query.drizzle}, ${price}, ${req.query.topping1}, ${req.query.topping2}, ${req.query.topping3}, ${req.query.topping4})`)
+    let stmt = `INSERT INTO transactions (transactiontime, sauce, cheeses, drizzle, price, topping1, topping2, topping3, topping4)
+    VALUES ('NOW()', '${req.query.sauce}', '${req.query.cheese}', '${req.query.drizzle}', '${price}', '${req.query.topping1}', '${req.query.topping2}', '${req.query.topping3}', '${req.query.topping4}');`
+
+    console.log(stmt)
+    await pool.query(stmt)
     
     console.log('successfully added!')
   }
