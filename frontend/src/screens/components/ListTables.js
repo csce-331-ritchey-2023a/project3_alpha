@@ -81,17 +81,18 @@ const ListTables = () => {
                     <caption className = "table-caption">Toppings</caption>
                     <thead>
                         <tr>
-                            <th>topping_id</th>
-                            <th>amount</th>
-                            <th>customer_price</th>
+                            <th>Topping</th>
+                            <th>Customer Price</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
                         {toppings.map(topping => (
                             <tr key={topping.topping_id}>
                                 <td>{topping.topping_id}</td>
-                                <td>{topping.amount}</td>
                                 <td>{Math.round(topping.customer_price*100)/100}</td>
+                                <td>{topping.amount}</td>
+
                             </tr>
                         ))} 
                     </tbody>
@@ -103,9 +104,9 @@ const ListTables = () => {
                     <caption className = "table-caption">Cheeses</caption>
                     <thead>
                         <tr>
-                            <th>cheeseid</th>
-                            <th>customerprice</th>
-                            <th>amount</th>
+                            <th>Cheese</th>
+                            <th>Customer Price</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,9 +126,9 @@ const ListTables = () => {
                     <caption className = "table-caption">Sauces</caption>
                     <thead>
                         <tr>
-                            <th>sauceid</th>
-                            <th>customerprice</th>
-                            <th>amount</th>
+                            <th>Sauce</th>
+                            <th>Customer Price</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -147,9 +148,9 @@ const ListTables = () => {
                     <caption className = "table-caption">Drizzles</caption>
                     <thead>
                         <tr>
-                            <th>drizzleid</th>
-                            <th>customerprice</th>
-                            <th>amount</th>
+                            <th>Drizzle</th>
+                            <th>Customer Price</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>

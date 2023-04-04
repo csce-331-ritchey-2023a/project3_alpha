@@ -7,7 +7,7 @@ import ListTables from "./components/ListTables";
 
 
 const ManagerScreen = () => {
-  return (
+  return (    
     <Fragment>
       <div className = "container">
         <ListTables />

@@ -107,8 +107,8 @@ const CustomerScreen = () => {
   return (
     <div>
         <h1>Welcome to the customer screen!</h1>
-        <Link to="/server" className="link-style">               
-          <h3>Go to server page</h3>            
+        <Link to="/" className="link-style">               
+          <h3>Return home</h3>            
         </Link>
         <Link to="/manager" className="link-style">               
           <h3>Go to manager page</h3>            
