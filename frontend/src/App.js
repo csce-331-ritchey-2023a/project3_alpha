@@ -29,7 +29,7 @@ function App() {
           <Route path="/" element={<HomeScreen />} />
           { <Route path="/customer" element={<CustomerScreen/>}  /> }
           <Route path="/manager" element={<ManagerScreen/>} />
-          <Route path="/server" element={<ServerScreen/>} />
+          <Route path="/server" element={<CustomerScreen />} />
 
           {<Route path="*" element={<NotFound/>}/>/* Any route that is not previously made will go to this error page */}
           
