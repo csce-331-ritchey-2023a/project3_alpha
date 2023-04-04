@@ -40,27 +40,19 @@ const HomeScreen = () => {
 
   return (
     <div>
-        <h1>Welcome to the HomeScreen</h1>
+        <h1>Welcome to Spin N' Stone!</h1>
 
           <div id="signInDiv"></div>
 
           <Link to="/customer" className="link-style">               
-            <h3>Go to customer order page</h3>            
+            <h3>Go to customer page</h3>            
           </Link>
-
-          {employee && (
-            <Link to="/server" className="link-style">               
-              <h3>Go to server page</h3>            
-            </Link>
-          )}
-          
-
-          {manager && (
-            <Link to="/manager" className="link-style">               
-              <h3>Go to manager page</h3>            
-            </Link>
-          )}
-          
+          <Link to="/server" className="link-style">               
+            <h3>Go to server page</h3>            
+          </Link>
+          <Link to="/manager" className="link-style">               
+            <h3>Go to manager page</h3>            
+          </Link>
 
         
     </div>

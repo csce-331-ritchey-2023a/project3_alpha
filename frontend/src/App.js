@@ -1,11 +1,11 @@
-import './App.css';
+ import './App.css';
 
 //import screens
 import HomeScreen from './screens/HomeScreen';
 import CustomerScreen from './screens/CustomerScreen';
 import ManagerScreen from './screens/ManagerScreen';
 import ServerScreen from './screens/ServerScreen';
-//import NotFound from './screens/NotFound';
+import NotFound from './screens/NotFound';
 
 
 // import components
@@ -26,12 +26,12 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<HomeScreen/>} />
-          <Route path="/customer" element={<CustomerScreen/>}  />
+          <Route path="/" element={<HomeScreen />} />
+          { <Route path="/customer" element={<CustomerScreen/>}  /> }
           <Route path="/manager" element={<ManagerScreen/>} />
           <Route path="/server" element={<ServerScreen/>} />
 
-          {/* <Route path="*" element={<NotFound/>}/> add component for wildcard app links */}
+          {<Route path="*" element={<NotFound/>}/>/* Any route that is not previously made will go to this error page */}
           
         </Routes>
       </main>
