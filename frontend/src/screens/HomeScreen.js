@@ -47,12 +47,19 @@ const HomeScreen = () => {
           <Link to="/customer" className="link-style">               
             <h3>Go to customer page</h3>            
           </Link>
-          <Link to="/server" className="link-style">               
-            <h3>Go to server page</h3>            
-          </Link>
-          <Link to="/manager" className="link-style">               
-            <h3>Go to manager page</h3>            
-          </Link>
+          {employee && (
+            <Link to="/server" className="link-style">               
+              <h3>Go to server page</h3>            
+            </Link>
+          )}
+          
+
+
+          {manager && (
+            <Link to="/manager" className="link-style">               
+              <h3>Go to manager page</h3>            
+            </Link>
+          )}
 
         
     </div>
