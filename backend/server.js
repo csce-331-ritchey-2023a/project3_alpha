@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 5000;
 connectDB(); // test db connection
 
 const pool = new Pool({ // make queries using pool
-    user: 'csce315331_albright',
+    user: 'csce315331_bui',
     host: 'csce-315-db.engr.tamu.edu',
     database: 'csce315331_alpha',
-    password: '529008060',
+    password: '830004551',
     port: 5432,
   });
 
