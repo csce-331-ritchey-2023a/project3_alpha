@@ -3,6 +3,7 @@ const express = require("express");
 const { Pool } = require("pg");
 const connectDB = require("./connect");
 const cors = require("cors");
+const path = require('path')
 
 const app = express(); // start express app
 
@@ -58,16 +59,18 @@ app.post("/transaction", async (req, res) => {
     console.error(err.message)
   }
 })
-/*
-app.get("/toppings", async (req, res) => { // sample query to get all toppings
-  try {
-    const toppings = await pool.query("SELECT * FROM toppings");
-    res.json(toppings.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-*/
+
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'))
+  })
+} else {
+  app.get('/', (req, res) => {
+      res.send('Api running')
+  })
+}
+
 app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
 
 
