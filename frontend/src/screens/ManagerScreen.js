@@ -4,13 +4,14 @@ import './ManagerScreen.css'
 
 //components
 import ListTables from "./components/ListTables";
+import SalesReport from "./components/SalesReport";
 
 
 const ManagerScreen = () => {
   return (    
     <Fragment>
       <div className = "container">
-        <ListTables />
+        <SalesReport />
       </div>
     </Fragment>
     

@@ -41,6 +41,21 @@ app.get("/:table/", async (req, res) => { // sample query to get all toppings
   }
 });
 
+app.get("/transactions/:startDate/:endDate", async (req, res) => {
+  const startDate = req.params.startDate;
+  const endDate = req.params.endDate;
+
+  try {
+    const item = await pool.query(
+      `SELECT * FROM transactions WHERE transactiontime >= $1 AND transactiontime <= $2`,
+      [startDate, endDate]
+    );
+    res.json(item.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.post("/transaction", async (req, res) => {
   let price = req.query.pizzatype == "cheese" ? 6.45 :
               req.query.pizzatype == "1-topping" ? 7.49 : 8.85
@@ -59,6 +74,8 @@ app.post("/transaction", async (req, res) => {
     console.error(err.message)
   }
 })
+
+
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
