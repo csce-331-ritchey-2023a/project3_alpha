@@ -80,7 +80,12 @@ const CustomerScreen = () => {
     get_cheeses();
     get_sauces();
     get_drizzles();
-},[]);
+  },[]);
+
+  useEffect(() => {
+    set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
+
+  }, [order['pizza-type']])
 
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
@@ -113,10 +118,7 @@ const CustomerScreen = () => {
         <Link to="/" className="link-style">               
           <h3>Return home</h3>            
         </Link>
-        <Link to="/manager" className="link-style">               
-          <h3>Go to manager page</h3>            
-        </Link>
-
+        
         <label htmlFor="pizza-type">Choose a pizza type:</label>
         <select 
           name="pizza-type" 

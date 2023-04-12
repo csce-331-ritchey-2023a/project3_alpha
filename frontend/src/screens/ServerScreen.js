@@ -63,7 +63,6 @@ const ServerScreen = () => {
 
   const get_drizzles = async () => {
       try{
-
           const response = await fetch("http://localhost:5000/drizzles");
           const json_data = await response.json();
 
@@ -80,7 +79,12 @@ const ServerScreen = () => {
     get_cheeses();
     get_sauces();
     get_drizzles();
-},[]);
+  },[]);
+
+  useEffect(() => {
+    set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
+
+  }, [order['pizza-type']])
 
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
@@ -112,9 +116,6 @@ const ServerScreen = () => {
         <h1>Welcome to the Server screen!</h1>
         <Link to="/" className="link-style">               
           <h3>Return home</h3>            
-        </Link>
-        <Link to="/manager" className="link-style">               
-          <h3>Go to manager page</h3>            
         </Link>
 
         <label htmlFor="pizza-type">Choose a pizza type:</label>

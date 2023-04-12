@@ -17,7 +17,7 @@ const HomeScreen = () => {
     if (user.hd == "tamu.edu"){
       setManager(true);
       setEmployee(false);
-    } if(user.email == "chasemalbright33@gmail.com" || user.email == "buijeremy0@gmail.com") {
+    } if(user.email == "chasemalbright33@gmail.com" || "jjrummell321@gmail.com" || "buijeremy0@gmail.com" || "njferns020@gmail.com") {
       setEmployee(true);
       setManager(false);
     }
