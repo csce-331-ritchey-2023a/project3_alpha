@@ -113,10 +113,7 @@ const CustomerScreen = () => {
         <Link to="/" className="link-style">               
           <h3>Return home</h3>            
         </Link>
-        <Link to="/manager" className="link-style">               
-          <h3>Go to manager page</h3>            
-        </Link>
-
+        
         <label htmlFor="pizza-type">Choose a pizza type:</label>
         <select 
           name="pizza-type" 
