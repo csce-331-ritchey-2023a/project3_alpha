@@ -63,7 +63,6 @@ const ServerScreen = () => {
 
   const get_drizzles = async () => {
       try{
-
           const response = await fetch("http://localhost:5000/drizzles");
           const json_data = await response.json();
 
@@ -80,7 +79,12 @@ const ServerScreen = () => {
     get_cheeses();
     get_sauces();
     get_drizzles();
-},[]);
+  },[]);
+
+  useEffect(() => {
+    set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
+
+  }, [order['pizza-type']])
 
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})

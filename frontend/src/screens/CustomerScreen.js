@@ -80,7 +80,12 @@ const CustomerScreen = () => {
     get_cheeses();
     get_sauces();
     get_drizzles();
-},[]);
+  },[]);
+
+  useEffect(() => {
+    set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
+
+  }, [order['pizza-type']])
 
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
