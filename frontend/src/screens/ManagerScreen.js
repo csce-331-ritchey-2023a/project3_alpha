@@ -11,6 +11,7 @@ const ManagerScreen = () => {
   return (    
     <Fragment>
       <div className = "container">
+        <ListTables />
         <SalesReport />
       </div>
     </Fragment>

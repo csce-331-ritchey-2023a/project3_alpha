@@ -19,7 +19,7 @@ const HomeScreen = () => {
       setEmployee(false);
     } if(user.email == "chasemalbright33@gmail.com" || "jjrummell321@gmail.com" || "buijeremy0@gmail.com" || "njferns020@gmail.com") {
       setEmployee(true);
-      setManager(false);
+      setManager(true);
     }
   }
 

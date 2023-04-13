@@ -1,56 +1,71 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 
 const SalesReport = () => {
-  const [salesData, setSalesData] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [salesData, setSalesData] = useState([]);
 
   const handleSubmit = async () => {
     const formattedStartDate = startDate + " 00:00:00";
     const formattedEndDate = endDate + " 23:59:59";
-    const response = await fetch(`/transactions/${formattedStartDate}/${formattedEndDate}`);
+    const response = await fetch(`http://localhost:5000/transactions/:${formattedStartDate}/:${formattedEndDate}`);
     const data = await response.json();
     setSalesData(data);
   };
 
+  const countPizzas = () => {
+    let cheeseCount = 0;
+    let oneToppingCount = 0;
+    let fourToppingCount = 0;
+
+    salesData.forEach((transaction) => {
+      if (transaction.price === "6.45") {
+        cheeseCount++;
+      } else if (transaction.price === "7.49") {
+        oneToppingCount++;
+      } else if (transaction.price === "8.85") {
+        fourToppingCount++;
+      }
+    });
+
+    return { cheese: cheeseCount, oneTopping: oneToppingCount, fourTopping: fourToppingCount };
+  };
+
+  const pizzaCount = countPizzas();
+
   return (
     <Fragment>
-      <div>
-        <label>Start Date (YYYY-MM-DD): </label>
-        <input
-          type="text"
-          onChange={(e) => setStartDate(e.target.value)}
-          value={startDate}
-        />
-      </div>
-      <div>
-        <label>End Date (YYYY-MM-DD): </label>
-        <input
-          type="text"
-          onChange={(e) => setEndDate(e.target.value)}
-          value={endDate}
-        />
-      </div>
-      <button onClick={handleSubmit}>Generate Report</button>
-      <table>
+      <label>
+        Start Date:
+        <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+      </label>
+      <label>
+        End Date:
+        <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+      </label>
+      <button className="btn btn-primary" onClick={handleSubmit}>
+        Generate Report
+      </button>
+
+      <table className="table">
         <thead>
           <tr>
-            <th>Type</th>
+            <th>Pizza Type</th>
             <th>Count</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Cheese Pizza</td>
-            <td>{salesData.filter((item) => item.price === 10).length}</td>
+            <td>Cheese</td>
+            <td>{pizzaCount.cheese}</td>
           </tr>
           <tr>
-            <td>One Topping Pizza</td>
-            <td>{salesData.filter((item) => item.price === 12).length}</td>
+            <td>One Topping</td>
+            <td>{pizzaCount.oneTopping}</td>
           </tr>
           <tr>
-            <td>Four Topping Pizza</td>
-            <td>{salesData.filter((item) => item.price === 15).length}</td>
+            <td>Four Topping</td>
+            <td>{pizzaCount.fourTopping}</td>
           </tr>
         </tbody>
       </table>
@@ -59,6 +74,7 @@ const SalesReport = () => {
 };
 
 export default SalesReport;
+
 
 
 
