@@ -77,27 +77,37 @@ const RestockReport = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {toppingData.map(toppings =>(
+          <tr key={pizzaCount.topping_id}>
             <td>{pizzaCount.topping_id}</td>
             <td>{pizzaCount.topping_amount}</td>
             <td>{pizzaCount.restock_toppings}</td>
-          </tr>
-          <tr>
-          <td>{pizzaCount.cheese_id[0]}</td>
-            <td>{pizzaCount.cheese_amount[0]}</td>
+          </tr>))}
+          </tbody>
+          <tbody>
+          {cheeseData.map(cheeses =>(
+          <tr key={cheeses.cheese_id}>
+            <td>{pizzaCount.cheese_id}</td>
+            <td>{pizzaCount.cheese_amount}</td>
             <td>{pizzaCount.restock_cheeses}</td>
-          </tr>
-          <tr>
-          <td>{pizzaCount.drizzle_id}</td>
+          </tr>))}
+          </tbody>
+          <tbody>
+          {drizzleData.map(drizzles =>(
+          <tr key={drizzles.drizzle_id}>
+            <td>{pizzaCount.drizzle_id}</td>
             <td>{pizzaCount.drizzle_amount}</td>
             <td>{pizzaCount.restock_drizzles}</td>
-          </tr>
-          <tr>
-          <td>{pizzaCount.sauce_id}</td>
+          </tr>))}
+          </tbody>
+          <tbody>
+          {sauceData.map(sauces =>(
+          <tr key={sauces.sauce_id}>
+            <td>{pizzaCount.sauce_id}</td>
             <td>{pizzaCount.sauce_amount}</td>
             <td>{pizzaCount.restock_sauces}</td>
-          </tr>
-        </tbody>
+          </tr>))}
+          </tbody>
       </table>
     </Fragment>
   );

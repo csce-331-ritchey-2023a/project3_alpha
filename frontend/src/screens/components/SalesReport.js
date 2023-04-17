@@ -19,7 +19,7 @@ const SalesReport = () => {
     let oneToppingCount = 0;
     let oneToppingPrice = 0.0;
     let fourToppingCount = 0;
-    let fourToppingprice = 0.0;
+    let fourToppingPrice = 0.0;
 
     salesData.forEach((transaction) => {
       if (transaction.price === "6.45") {
@@ -30,11 +30,11 @@ const SalesReport = () => {
         oneToppingPrice+= 7.49;
       } else if (transaction.price === "8.85") {
         fourToppingCount++;
-        fourToppingprice+= 8.85;
+        fourToppingPrice+= 8.85;
       }
     });
 
-    return { cheese: cheeseCount, oneTopping: oneToppingCount, fourTopping: fourToppingCount };
+    return { cheese: cheeseCount, cheese_price: cheesePrice, oneTopping: oneToppingCount, oneTopping_price: oneToppingPrice, fourTopping: fourToppingCount, fourTopping_price: fourToppingPrice};
   };
 
   const pizzaCount = countPizzas();
@@ -64,14 +64,17 @@ const SalesReport = () => {
           <tr>
             <td>Cheese</td>
             <td>{pizzaCount.cheese}</td>
+            <td>${pizzaCount.cheese_price.toFixed(2)}</td>
           </tr>
           <tr>
             <td>One Topping</td>
             <td>{pizzaCount.oneTopping}</td>
+            <td>${pizzaCount.oneTopping_price.toFixed(2)}</td>
           </tr>
           <tr>
             <td>Four Topping</td>
             <td>{pizzaCount.fourTopping}</td>
+            <td>${pizzaCount.fourTopping_price.toFixed(2)}</td>
           </tr>
         </tbody>
       </table>
