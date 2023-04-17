@@ -78,7 +78,7 @@ const RestockReport = () => {
         </thead>
         <tbody>
           {toppingData.map(toppings =>(
-          <tr key={toppings.topping_id}>
+          <tr key={pizzaCount.topping_id}>
             <td>{pizzaCount.topping_id}</td>
             <td>{pizzaCount.topping_amount}</td>
             <td>{pizzaCount.restock_toppings}</td>
