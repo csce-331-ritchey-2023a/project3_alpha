@@ -78,8 +78,8 @@ const RestockReport = () => {
         </thead>
         <tbody>
           <tr>
-            <td>{pizzaCount.topping_id[0]}</td>
-            <td>{pizzaCount.topping_amount[0]}</td>
+            <td>{pizzaCount.topping_id}</td>
+            <td>{pizzaCount.topping_amount}</td>
             <td>{pizzaCount.restock_toppings}</td>
           </tr>
           <tr>

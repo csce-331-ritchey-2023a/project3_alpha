@@ -15,16 +15,22 @@ const SalesReport = () => {
 
   const countPizzas = () => {
     let cheeseCount = 0;
+    let cheesePrice = 0.0;
     let oneToppingCount = 0;
+    let oneToppingPrice = 0.0;
     let fourToppingCount = 0;
+    let fourToppingprice = 0.0;
 
     salesData.forEach((transaction) => {
       if (transaction.price === "6.45") {
         cheeseCount++;
+        cheesePrice+= 6.45;
       } else if (transaction.price === "7.49") {
         oneToppingCount++;
+        oneToppingPrice+= 7.49;
       } else if (transaction.price === "8.85") {
         fourToppingCount++;
+        fourToppingprice+= 8.85;
       }
     });
 
