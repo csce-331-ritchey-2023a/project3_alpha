@@ -8,6 +8,7 @@ import SalesReport from "./components/SalesReport";
 import RestockReport from "./components/RestockReport";
 
 import { XZReport } from './components/XZReport';
+import ExcessReport from './components/ExcessReport';
 import { Xreport } from './components/Xreport';
 
 
@@ -17,7 +18,8 @@ const ManagerScreen = () => {
       <div className = "container">
         <ListTables />
         <SalesReport />
-        <RestockReport /> 
+        <RestockReport />
+        <ExcessReport /> 
 
         <XZReport />
         <Xreport />

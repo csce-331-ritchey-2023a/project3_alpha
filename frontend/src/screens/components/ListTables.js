@@ -72,8 +72,6 @@ const ListTables = () => {
         get_drizzles();
     },[]);
 
-    console.log(toppings);
-
     return <Fragment>
         <div className = "row">
             <div className = "col-md-6">

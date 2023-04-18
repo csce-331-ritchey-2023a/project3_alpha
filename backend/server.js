@@ -42,8 +42,8 @@ app.get("/:table/", async (req, res) => { // sample query to get all toppings
 });
 
 app.get("/transactions/:startDate/:endDate", async (req, res) => {
-  const startDate = req.params.startDate;
-  const endDate = req.params.endDate;
+  const startDate = req.params.startDate.replaceAll("-", "/");
+  const endDate = req.params.endDate.replaceAll("-", "/");
 
   try {
     const item = await pool.query(
@@ -185,7 +185,6 @@ app.get('/a/b/c/d/xreport/insert', async (req,res) => {
   }
 
 });
-
 
 
 if(process.env.NODE_ENV === "production") {
