@@ -30,6 +30,10 @@ export const XZReport = () => {
     const handleSubmit = () => {
         generateZreport();
     }
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      }
 
     useEffect(() => {
         getXZreport();
@@ -53,7 +57,7 @@ export const XZReport = () => {
                         {zreport.map(zreport => (
                             <tr key={zreport.reportid}>
                                 <td>{zreport.reportid}</td>
-                                <td>{zreport.reportdate}</td>
+                                <td>{formatDate(zreport.reportdate)}</td>
                                 <td>{zreport.totals}</td>
                             </tr>
                         ))} 
