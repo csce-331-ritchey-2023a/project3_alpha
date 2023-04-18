@@ -7,6 +7,8 @@ import ListTables from "./components/ListTables";
 import SalesReport from "./components/SalesReport";
 import RestockReport from "./components/RestockReport";
 
+import { XZReport } from './components/XZReport';
+
 
 const ManagerScreen = () => {
   return (   
@@ -15,6 +17,9 @@ const ManagerScreen = () => {
         <ListTables />
         <SalesReport />
         <RestockReport /> 
+
+        <XZReport />
+
       </div>
     </Fragment>
     

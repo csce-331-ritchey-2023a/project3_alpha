@@ -12,10 +12,10 @@ const PORT = process.env.PORT || 5000;
 connectDB(); // test db connection
 
 const pool = new Pool({ // make queries using pool
-    user: 'csce315331_bui',
+    user: 'csce315331_albright',
     host: 'csce-315-db.engr.tamu.edu',
     database: 'csce315331_alpha',
-    password: '830004551',
+    password: '529008060',
     port: 5432,
   });
 
@@ -23,7 +23,7 @@ const pool = new Pool({ // make queries using pool
 app.use(cors());
 app.use(express.json());
 
-const foodTables = ["toppings", "cheeses", "drizzles", "sauces", "toppings"]
+const foodTables = ["toppings", "cheeses", "drizzles", "sauces", "toppings","zreport"]
 
 app.get("/:table/", async (req, res) => { // sample query to get all toppings
   table = req.params.table
@@ -71,6 +71,64 @@ app.post("/transaction", async (req, res) => {
     console.log('successfully added!')
   }
   catch (err) {
+    console.error(err.message)
+  }
+})
+
+app.get('/a/b/c/d/zreport', async (req,res) => {
+  try{
+    const stmt = `SELECT * FROM zreport`;
+    const item = await pool.query(stmt);
+
+    console.log(item.rows)
+    res.json(item.rows);
+
+  } catch(err){
+    console.error(err.message)
+  }
+})
+
+
+
+app.get('/a/b/c/d/zreport/insert', async (req,res) => {
+  try{
+    const checkQuery = `SELECT COUNT(*) FROM zreport`;
+    const queryRes = await pool.query(checkQuery);
+    console.log(parseInt(queryRes.rows[0].count))
+    if (parseInt(queryRes.rows[0].count) == 0){ // if no records in z report table
+      const s = `SELECT SUM(PRICE) FROM transactions`;
+      const q = await pool.query(s);
+      const sum = q.rows[0].sum;
+
+      const currentTime = Date.now()
+
+      const stmt = `INSERT INTO zreport (reportDate, totals) VALUES((to_timestamp(${currentTime} / 1000.0)), ${sum})`;
+      const item = await pool.query(stmt);
+      res.json(item.rows);
+      
+    } else {
+      const stmt = `SELECT MAX(reportDate) FROM zreport`;
+      const item = await pool.query(stmt);
+
+      const lastReport = Date.parse(item.rows[0].max.toString())
+      const currentTime = Date.now()
+
+
+      const stmt2 = `SELECT SUM(price) FROM transactions WHERE transactiontime BETWEEN (to_timestamp(${lastReport} / 1000.0)) AND (to_timestamp(${currentTime} / 1000.0))`;
+      const item2 = await pool.query(stmt2);
+
+      let sum = item2.rows[0].sum;
+      if (sum == null){
+        sum = "0.00"
+      }
+
+      const stmt3 = `INSERT INTO zreport (reportDate, totals) VALUES((to_timestamp(${currentTime} / 1000.0)), ${sum})`;
+      const item3 = await pool.query(stmt3);
+
+      res.json(item3.rows);
+    }
+
+  } catch(err){
     console.error(err.message)
   }
 })
