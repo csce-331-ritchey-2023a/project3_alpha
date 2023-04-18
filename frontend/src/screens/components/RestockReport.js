@@ -22,8 +22,8 @@ const RestockReport = () => {
   };
 
   const countInventory = () => {
-    let toppingRecommendation = 98;
-    let cheeseRecommendation = 150;
+    let toppingRecommendation = 90;
+    let cheeseRecommendation = 125;
     let drizzleRecommendation = 95;
     let sauceRecommendation = 90;
     const toppingID = [];
@@ -77,27 +77,37 @@ const RestockReport = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{pizzaCount.topping_id[0]}</td>
-            <td>{pizzaCount.topping_amount[0]}</td>
+          {pizzaCount.topping_id.map(({toppings}) =>(
+          <tr key={pizzaCount.topping_id}>
+            <td>{pizzaCount.topping_id}</td>
+            <td>{pizzaCount.topping_amount}</td>
             <td>{pizzaCount.restock_toppings}</td>
-          </tr>
-          <tr>
-          <td>{pizzaCount.cheese_id[0]}</td>
-            <td>{pizzaCount.cheese_amount[0]}</td>
+          </tr>))}
+          </tbody>
+          <tbody>
+          {pizzaCount.cheese_id.map(cheeses =>(
+          <tr key={pizzaCount.cheese_id}>
+            <td>{pizzaCount.cheese_id}</td>
+            <td>{pizzaCount.cheese_amount}</td>
             <td>{pizzaCount.restock_cheeses}</td>
-          </tr>
-          <tr>
-          <td>{pizzaCount.drizzle_id}</td>
+          </tr>))}
+          </tbody>
+          <tbody>
+          {pizzaCount.drizzle_id.map(drizzles =>(
+          <tr key={pizzaCount.drizzle_id}>
+            <td>{pizzaCount.drizzle_id}</td>
             <td>{pizzaCount.drizzle_amount}</td>
             <td>{pizzaCount.restock_drizzles}</td>
-          </tr>
-          <tr>
-          <td>{pizzaCount.sauce_id}</td>
+          </tr>))}
+          </tbody>
+          <tbody>
+          {pizzaCount.sauce_id.map(sauces =>(
+          <tr key={pizzaCount.sauce_id}>
+            <td>{pizzaCount.sauce_id}</td>
             <td>{pizzaCount.sauce_amount}</td>
             <td>{pizzaCount.restock_sauces}</td>
-          </tr>
-        </tbody>
+          </tr>))}
+          </tbody>
       </table>
     </Fragment>
   );

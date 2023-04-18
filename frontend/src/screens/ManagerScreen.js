@@ -6,6 +6,8 @@ import './ManagerScreen.css'
 import ListTables from "./components/ListTables";
 import SalesReport from "./components/SalesReport";
 import RestockReport from "./components/RestockReport";
+
+import { XZReport } from './components/XZReport';
 import ExcessReport from './components/ExcessReport';
 
 
@@ -17,6 +19,9 @@ const ManagerScreen = () => {
         <SalesReport />
         <RestockReport />
         <ExcessReport /> 
+
+        <XZReport />
+
       </div>
     </Fragment>
     
