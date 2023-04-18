@@ -28,8 +28,17 @@ export const XZReport = () => {
     }
 
     const handleSubmit = () => {
-        generateZreport();
+        if (zreport.length == 0){
+            generateZreport();
+        } else if(formatDate(zreport[zreport.length-1].reportdate) == formatDate(Date.now())) {
+            alert("Can not generate a Z report from same day");
+        } else {
+            generateZreport();
+        }
+        
     }
+
+
     function formatDate(dateString) {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });

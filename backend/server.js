@@ -131,7 +131,60 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
   } catch(err){
     console.error(err.message)
   }
-})
+});
+
+app.get('/a/b/c/d/xreport/insert', async (req,res) => {
+
+  try {
+    const checkQuery = `SELECT COUNT(*) FROM xreport`;
+    const queryRes = await pool.query(checkQuery);
+
+    if (parseInt(queryRes.rows[0].count) == 0){// if no xreports
+      console.log("there are no xreports")
+
+      const s = `SELECT SUM(PRICE) FROM transactions`;
+      const q = await pool.query(s);
+      const sum = q.rows[0].sum;
+
+      const currentTime = Date.now()
+
+      const stmt = `INSERT INTO xreport (lastreport) VALUES((to_timestamp(${currentTime} / 1000.0)))`;
+      await pool.query(stmt);
+      res.json(q.rows[0])
+
+
+
+    } else {
+      console.log("there are xreports")
+
+      const stmt = `SELECT MAX(lastreport) FROM xreport`;
+      const item = await pool.query(stmt);
+
+      const lastReport = Date.parse(item.rows[0].max.toString())
+      const currentTime = Date.now()
+
+      const stmt2 = `SELECT SUM(price) FROM transactions WHERE transactiontime BETWEEN (to_timestamp(${lastReport} / 1000.0)) AND (to_timestamp(${currentTime} / 1000.0))`;
+      let item2 = await pool.query(stmt2);
+
+      let sum = item2.rows[0].sum;
+      if (sum == null){
+        sum = "0.00"
+        item2.rows[0].sum = sum;
+      }
+
+      const stmt3 = `INSERT INTO xreport (lastreport) VALUES((to_timestamp(${currentTime} / 1000.0)))`;
+      await pool.query(stmt3);
+
+      res.json(item2.rows[0])
+
+
+    }
+    
+  } catch (err) {
+    console.error(err.message)
+  }
+
+});
 
 
 

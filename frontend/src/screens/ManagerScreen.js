@@ -8,6 +8,7 @@ import SalesReport from "./components/SalesReport";
 import RestockReport from "./components/RestockReport";
 
 import { XZReport } from './components/XZReport';
+import { Xreport } from './components/Xreport';
 
 
 const ManagerScreen = () => {
@@ -19,6 +20,7 @@ const ManagerScreen = () => {
         <RestockReport /> 
 
         <XZReport />
+        <Xreport />
 
       </div>
     </Fragment>
