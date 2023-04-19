@@ -7,10 +7,10 @@ const RestockReport = () => {
   const [sauceData, setSauceData] = useState([]);
 
   const handleSubmit = async () => {
-    const topping_response = await fetch(`http://localhost:5000/toppings`);
-    const cheese_response = await fetch(`http://localhost:5000/cheeses`);
-    const drizzle_response = await fetch(`http://localhost:5000/drizzles`);
-    const sauce_response = await fetch(`http://localhost:5000/sauces`);
+    const topping_response = await fetch(`https://project3-alpha.onrender.com/toppings`);
+    const cheese_response = await fetch(`https://project3-alpha.onrender.com/cheeses`);
+    const drizzle_response = await fetch(`https://project3-alpha.onrender.com/drizzles`);
+    const sauce_response = await fetch(`https://project3-alpha.onrender.com/sauces`);
     const topping_data = await topping_response.json();
     const cheese_data = await cheese_response.json();
     const drizzle_data = await drizzle_response.json();

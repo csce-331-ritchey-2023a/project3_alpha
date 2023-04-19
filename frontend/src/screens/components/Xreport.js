@@ -6,7 +6,7 @@ export const Xreport = () => {
   const [xreport, setXreport] = useState("please run an Xreport")
 
   const getXreport = () => {
-    Axios.get('http://localhost:5000/a/b/c/d/xreport/insert')
+    Axios.get('https://project3-alpha.onrender.com/a/b/c/d/xreport/insert')
       .then((response) => {
           console.log(response.data.sum)
           setXreport(response.data.sum)

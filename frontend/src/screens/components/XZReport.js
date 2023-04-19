@@ -6,7 +6,7 @@ export const XZReport = () => {
     const [zreport, setZreport] = useState([]);
 
     const getXZreport = () => {
-        Axios.get('http://localhost:5000/a/b/c/d/zreport')
+        Axios.get('https://project3-alpha.onrender.com/a/b/c/d/zreport')
             .then((response) => {
                 setZreport(response.data)
                 console.log("helloooooowdfwpdcoc")
@@ -18,7 +18,7 @@ export const XZReport = () => {
     }
 
     const generateZreport = async () =>{
-        Axios.get('http://localhost:5000/a/b/c/d/zreport/insert')
+        Axios.get('https://project3-alpha.onrender.com/a/b/c/d/zreport/insert')
             .then((response) => {
                 getXZreport();
             })
