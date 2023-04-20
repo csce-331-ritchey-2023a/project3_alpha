@@ -74,6 +74,23 @@ app.post("/transaction", async (req, res) => {
     console.error(err.message)
   }
 })
+ //APP PUT
+app.put("/cheeses", async (req, res) => {
+  try {
+    console.log(req.query)
+    let stmt = conn.prepareStatement("UPDATE cheeses SET amount = amount - 1 WHERE cheeseid = ?");
+
+    console.log(stmt)
+    await pool.query(stmt)
+    
+    console.log('successfully added!')
+  }
+  catch (err) {
+    console.error(err.message)
+  }
+})
+
+//TODO: app.put can be decremented in inventory
 
 app.get('/a/b/c/d/zreport', async (req,res) => {
   try{
