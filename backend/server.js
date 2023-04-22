@@ -12,10 +12,10 @@ const PORT = process.env.PORT || 5000;
 connectDB(); // test db connection
 
 const pool = new Pool({ // make queries using pool
-    user: 'csce315331_albright',
+    user: 'csce315331_bui',
     host: 'csce-315-db.engr.tamu.edu',
     database: 'csce315331_alpha',
-    password: '529008060',
+    password: '830004551',
     port: 5432,
   });
 
@@ -74,6 +74,23 @@ app.post("/transaction", async (req, res) => {
     console.error(err.message)
   }
 })
+ //APP PUT
+app.put("/cheeses", async (req, res) => {
+  try {
+    console.log(req.query)
+    let stmt = conn.prepareStatement("UPDATE cheeses SET amount = amount - 1 WHERE cheeseid = ?");
+
+    console.log(stmt)
+    await pool.query(stmt)
+    
+    console.log('successfully added!')
+  }
+  catch (err) {
+    console.error(err.message)
+  }
+})
+
+//TODO: app.put can be decremented in inventory
 
 app.get('/a/b/c/d/zreport', async (req,res) => {
   try{
