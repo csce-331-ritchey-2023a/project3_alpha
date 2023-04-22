@@ -9,6 +9,16 @@ const HomeScreen = () => {
   const [manager, setManager] = useState(false);
   const [employee, setEmployee] = useState(false);
 
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false
+      },
+      "google_translate_element"
+    );
+  };
+
   function handleCallbackResponse(response) {
     //console.log("Encoded JWT token:"+ response.credential)
     var user = jwt_decode(response.credential)
@@ -35,6 +45,14 @@ const HomeScreen = () => {
       {theme: "outline", size: "large"}
     )
 
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+
   }, []);
 
 
@@ -43,6 +61,7 @@ const HomeScreen = () => {
         <h1>Welcome to Spin N' Stone!</h1>
 
           <div id="signInDiv"></div>
+          <div id="google_translate_element"></div>
 
           <Link to="/customer" className="link-style">               
             <h3>Go to customer page</h3>            
