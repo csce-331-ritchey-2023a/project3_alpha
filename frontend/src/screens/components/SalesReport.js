@@ -33,11 +33,14 @@ const SalesReport = () => {
         fourToppingPrice+= 8.85;
       }
     });
-
-    return { cheese: cheeseCount, cheese_price: cheesePrice, oneTopping: oneToppingCount, oneTopping_price: oneToppingPrice, fourTopping: fourToppingCount, fourTopping_price: fourToppingPrice};
+    
+    return { cheese: cheeseCount, cheese_price: cheesePrice, oneTopping: oneToppingCount, oneTopping_price: oneToppingPrice, fourTopping: fourToppingCount, fourTopping_price: fourToppingPrice,};
+    
   };
 
   const pizzaCount = countPizzas();
+  console.log(pizzaCount)
+  
 
   return (
     <Fragment>
