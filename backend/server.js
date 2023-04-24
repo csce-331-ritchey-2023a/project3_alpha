@@ -56,18 +56,28 @@ app.get("/transactions/:startDate/:endDate", async (req, res) => {
   }
 });
 
-app.post("/transaction", async (req, res) => {
+app.post("/transaction", async (req, res) => { //Submits a customer's order into the database, decrementing each item chosen from the inventory by one
   let price = req.query.pizzatype == "cheese" ? 6.45 :
               req.query.pizzatype == "1-topping" ? 7.49 : 8.85
 
   try {
-    console.log(req.query)
     let stmt = `INSERT INTO transactions (transactiontime, sauce, cheeses, drizzle, price, topping1, topping2, topping3, topping4)
     VALUES ('NOW()', '${req.query.sauce}', '${req.query.cheese}', '${req.query.drizzle}', '${price}', '${req.query.topping1}', '${req.query.topping2}', '${req.query.topping3}', '${req.query.topping4}');`
-
-    console.log(stmt)
+    let cheese_stmt = `UPDATE cheeses SET amount = amount - 1 WHERE cheeseid = '${req.query.cheese}';`
+    let sauce_stmt = `UPDATE sauces SET amount = amount - 1 WHERE sauceid = '${req.query.sauce}';`
+    let drizzle_stmt = `UPDATE drizzles SET amount = amount - 1 WHERE drizzleid = '${req.query.drizzle}';`
+    let topping1_stmt = `UPDATE toppings SET amount = amount - 1 WHERE topping_id = '${req.query.topping1}';`
+    let topping2_stmt = `UPDATE toppings SET amount = amount - 1 WHERE topping_id = '${req.query.topping2}';`
+    let topping3_stmt = `UPDATE toppings SET amount = amount - 1 WHERE topping_id = '${req.query.topping3}';`
+    let topping4_stmt = `UPDATE toppings SET amount = amount - 1 WHERE topping_id = '${req.query.topping4}';`
     await pool.query(stmt)
-    
+    await pool.query(cheese_stmt)
+    await pool.query(sauce_stmt)
+    await pool.query(drizzle_stmt)
+    await pool.query(topping1_stmt)
+    await pool.query(topping2_stmt)
+    await pool.query(topping3_stmt)
+    await pool.query(topping4_stmt)
     console.log('successfully added!')
   }
   catch (err) {
@@ -78,7 +88,6 @@ app.post("/transaction", async (req, res) => {
 app.put("/cheeses", async (req, res) => {
   try {
     console.log(req.query)
-    let stmt = conn.prepareStatement("UPDATE cheeses SET amount = amount - 1 WHERE cheeseid = ?");
 
     console.log(stmt)
     await pool.query(stmt)
