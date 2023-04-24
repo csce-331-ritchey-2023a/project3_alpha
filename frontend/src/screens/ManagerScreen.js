@@ -11,7 +11,7 @@ import { XZReport } from './components/XZReport';
 import ExcessReport from './components/ExcessReport';
 import { Xreport } from './components/Xreport';
 import GoogleTranslate from './components/GoogleTranslate';
-
+import { AddUpdateProducts } from './components/UpdateManager';
 
 const ManagerScreen = () => {
   return (   
@@ -19,7 +19,7 @@ const ManagerScreen = () => {
       <div className = "container">
         <GoogleTranslate />
 
-
+        <AddUpdateProducts />
         <ListTables />
         <SalesReport />
         <RestockReport />
