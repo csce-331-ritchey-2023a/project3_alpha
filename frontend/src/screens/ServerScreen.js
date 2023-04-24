@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './ServerScreen.css'
 import {Link} from 'react-router-dom'
+import GoogleTranslate from './components/GoogleTranslate'
 
 const ServerScreen = () => {
   const [toppings, set_toppings] = useState([]);
@@ -114,6 +115,7 @@ const ServerScreen = () => {
   return (
     <div>
         <h1>Welcome to the Server screen!</h1>
+        <GoogleTranslate />
         <Link to="/" className="link-style">               
           <h3>Return home</h3>            
         </Link>
