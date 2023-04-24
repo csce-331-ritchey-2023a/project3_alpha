@@ -21,7 +21,7 @@ const ExcessReport = () => {
         setTransactions(t)
 
         for (const key of Object.keys(edibles)) {
-            console.log(key)
+            // console.log(key)
             const temp = edibles[key]
             temp[1] = t.reduce((acc, cur) => Object.values(cur).includes(key) ? ++acc : acc, 0);
             setEdibles({...edibles, key: temp})
@@ -79,7 +79,7 @@ const ExcessReport = () => {
                         const curr_total = edibles[k][0]
                         const past_total = edibles[k][1] + curr_total
 
-                        console.log(curr_total, past_total, curr_total/past_total)
+                        // console.log(curr_total, past_total, curr_total/past_total)
 
                         if (curr_total/past_total > 0.9 && curr_total/past_total < 1) {
                             return <tr key={k}>

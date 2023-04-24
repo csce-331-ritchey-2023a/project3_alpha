@@ -203,6 +203,68 @@ app.get('/a/b/c/d/xreport/insert', async (req,res) => {
 
 });
 
+app.get('/update/:type/:name/:price/:amount', async (req, res) => {
+  const type = req.params.type
+  const name = req.params.name
+  const amount = req.params.amount
+  const price = req.params.price
+
+  if (type == "cheeses") {
+    pool.query(`
+      update ${type} set amount=${amount}, customerprice=${price} where cheeseid='${name}';
+    `)
+  }
+
+  if (req.params.type == "drizzles") {
+    pool.query(`
+      update ${type} set amount=${amount}, customerprice=${price} where drizzleid='${name}';
+    `)
+  }
+
+  if (req.params.type == "toppings") {
+    pool.query(`
+      update ${type} set amount=${amount}, customerprice=${price} where topping_id='${name}';
+    `)
+  }
+
+  if (req.params.type == "sauces") {
+    pool.query(`
+      update ${type} set amount=${amount}, customerprice=${price} where sauceid='${name}';
+    `)
+  }
+})
+
+app.get('/insert/:type/:name/:price/:amount', async (req, res) => {
+  const type = req.params.type
+  const name = req.params.name
+  const amount = req.params.amount
+  const price = req.params.price
+
+  if (type == "cheeses") {
+    pool.query(`
+      insert into ${type} (cheeseid, amount, customerprice) VALUES(${name}, ${amount}, ${price});
+    `)
+  }
+
+  if (req.params.type == "drizzles") {
+    pool.query(`
+      insert into ${type} (drizzleid, amount, customerprice) VALUES(${name}, ${amount}, ${price});
+    `)
+  }
+
+  if (req.params.type == "toppings") {
+    pool.query(`
+      insert '${type}' set amount=${amount}, customerprice=${price} where topping_id='${name}';
+    `)
+  }
+
+  if (req.params.type == "sauces") {
+    pool.query(`
+      insert '${type}' into  amount=${amount}, customerprice=${price} where sauceid=${name};
+    `)
+  }
+})
+
 
 if(process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
