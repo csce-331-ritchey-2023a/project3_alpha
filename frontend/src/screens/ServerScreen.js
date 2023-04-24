@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './ServerScreen.css'
 import {Link} from 'react-router-dom'
+import GoogleTranslate from './components/GoogleTranslate'
 
 const ServerScreen = () => {
   const [toppings, set_toppings] = useState([]);
@@ -113,9 +114,35 @@ const ServerScreen = () => {
 
   return (
     <div>
-      <img src="./spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
-    
-      <div className="container-fluid d-flex justify-content-center">
+        <h1>Welcome to the Server screen!</h1>
+        <GoogleTranslate />
+        <Link to="/" className="link-style">               
+          <h3>Return home</h3>            
+        </Link>
+
+        <label htmlFor="pizza-type">Choose a pizza type:</label>
+        <select 
+          name="pizza-type" 
+          id="pizza-type" 
+          value={order["pizza-type"]}
+          onChange={e => setOrderDetails("pizza-type", e.target.value)} >
+          <option value="" disabled>Select customer option</option>
+          <option value="cheese">Cheese</option>
+          <option value="1-topping">1 Topping</option>
+          <option value="4-topping">4 Topping</option>
+        </select>
+        <br />
+
+        <label htmlFor="sauces">Choose a sauce:</label>
+        <select name="sauces" id="sauces" value={order.sauce} onChange={e => setOrderDetails("sauce", e.target.value)}>
+          <option value="" disabled>Select customer option</option>
+          {
+            sauces.map(sauce => (
+              <option value={sauce.sauceid} key={sauce.sauceid}>{sauce.sauceid}</option>
+            ))
+          }
+        </select>
+        <br />
         
         <div className="col-md-6 mt-2 mb-2">
           <h1>Welcome to Spin N' Stone!</h1>
@@ -242,7 +269,6 @@ const ServerScreen = () => {
           <button onClick={submitOrder}>Submit customer order</button>
         </div>
       </div>
-    </div>
   )
 }
 

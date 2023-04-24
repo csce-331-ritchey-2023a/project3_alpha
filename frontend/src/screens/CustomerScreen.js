@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './CustomerScreen.css'
 import {Link} from 'react-router-dom'
+import GoogleTranslate from './components/GoogleTranslate'
 
 const CustomerScreen = () => {
   const [toppings, set_toppings] = useState([]);
