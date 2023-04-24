@@ -3,21 +3,12 @@ import {Link} from 'react-router-dom'
 
 import React from 'react'
 import { useState, useEffect } from 'react';
+import GoogleTranslate from './components/GoogleTranslate';
 import jwt_decode from "jwt-decode";
 
 const HomeScreen = () => {
   const [manager, setManager] = useState(false);
   const [employee, setEmployee] = useState(false);
-
-  const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement(
-      {
-        pageLanguage: "en",
-        autoDisplay: false
-      },
-      "google_translate_element"
-    );
-  };
 
   function handleCallbackResponse(response) {
     //console.log("Encoded JWT token:"+ response.credential)
@@ -34,6 +25,7 @@ const HomeScreen = () => {
   }
 
   useEffect(() => {
+
     /* global google */
     google.accounts.id.initialize({
       client_id: "245360752945-o4k6f4ck5ethcv2sbjn74dgbaud6nndt.apps.googleusercontent.com",
@@ -44,15 +36,6 @@ const HomeScreen = () => {
       document.getElementById("signInDiv"),
       {theme: "outline", size: "large"}
     )
-
-    var addScript = document.createElement("script");
-    addScript.setAttribute(
-      "src",
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    );
-    document.body.appendChild(addScript);
-    window.googleTranslateElementInit = googleTranslateElementInit;
-
   }, []);
 
 
@@ -61,7 +44,8 @@ const HomeScreen = () => {
         <h1>Welcome to Spin N' Stone!</h1>
 
           <div id="signInDiv"></div>
-          <div id="google_translate_element"></div>
+          <GoogleTranslate />
+
 
           <Link to="/customer" className="link-style">               
             <h3>Go to customer page</h3>            
@@ -72,8 +56,6 @@ const HomeScreen = () => {
             </Link>
           )}
           
-
-
           {manager && (
             <Link to="/manager" className="link-style">               
               <h3>Go to manager page</h3>            

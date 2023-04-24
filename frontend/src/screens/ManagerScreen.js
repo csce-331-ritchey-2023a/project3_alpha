@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Fragment,useEffect} from 'react'
 import './ManagerScreen.css'
 
 
@@ -10,12 +10,16 @@ import RestockReport from "./components/RestockReport";
 import { XZReport } from './components/XZReport';
 import ExcessReport from './components/ExcessReport';
 import { Xreport } from './components/Xreport';
+import GoogleTranslate from './components/GoogleTranslate';
 
 
 const ManagerScreen = () => {
   return (   
     <Fragment>
       <div className = "container">
+        <GoogleTranslate />
+
+
         <ListTables />
         <SalesReport />
         <RestockReport />
