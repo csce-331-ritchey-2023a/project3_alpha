@@ -9,8 +9,8 @@ export const XZReport = () => {
         Axios.get('http://localhost:5000/a/b/c/d/zreport')
             .then((response) => {
                 setZreport(response.data)
-                console.log("helloooooowdfwpdcoc")
-                console.log(zreport)
+                // console.log("helloooooowdfwpdcoc")
+                // console.log(zreport)
             })
             .catch(() => {
                 console.log('error')
