@@ -15,7 +15,7 @@ const AddUpdateProducts = () => {
     }, [name, price, amount, type])
 
     let handleSubmit = async () => {
-        if (operation == "addnew") {
+        if (operation == "update") {
             await fetch(`http://localhost:5000/update/${type}/${name}/${price}/${amount}`)
         }
         else {
@@ -41,7 +41,7 @@ const AddUpdateProducts = () => {
 
             <label htmlFor="type" value={type}>Type</label>
             <select id="type" value={type} onChange={e => setType(e.target.value)} defaultValue="">
-                <option value="" disabled>Pick a topping</option>
+                <option value="" disabled>Pick an Ingredient</option>
                 <option value="cheeses">Cheeses</option>
                 <option value="toppings">Toppings</option>
                 <option value="sauces">Sauces</option>
