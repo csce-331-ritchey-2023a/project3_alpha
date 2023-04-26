@@ -1,0 +1,13 @@
+.customer-background{
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.Spin-n-stone-logo {
+    display: block;
+    margin: 0 auto;
+    position: flex;
+    top: 0;
+    transform: translateX(-50%);
+  }
