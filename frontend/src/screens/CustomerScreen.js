@@ -121,7 +121,7 @@ const CustomerScreen = () => {
       <Link to="/" className="link-style">               
             <h3>Return home</h3>            
       </Link>
-      <img src="./spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+      <img src="./white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
       <div className="container-fluid d-flex justify-content-center text-white">
         <div className="col-md-6 mt-2 mb-2">
           <h1>Welcome to Spin N' Stone!</h1> 
