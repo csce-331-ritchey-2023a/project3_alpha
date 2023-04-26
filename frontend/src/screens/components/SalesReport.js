@@ -53,7 +53,7 @@ const SalesReport = () => {
         <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
       </label>
       <button className="btn btn-primary" onClick={handleSubmit}>
-        Generate Report
+        Generate Sales Report
       </button>
 
       <table className="table">
