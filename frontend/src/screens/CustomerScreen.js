@@ -17,7 +17,8 @@ const CustomerScreen = () => {
     "topping4": "",
     "sauce": "",
     "cheese": "",
-    "drizzle": ""
+    "drizzle": "",
+    "payment-method":""
   })
 
   const get_toppings = async () => {
@@ -121,7 +122,7 @@ const CustomerScreen = () => {
       <Link to="/" className="link-style">               
             <h3>Return home</h3>            
       </Link>
-      <img src="./white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+      <img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
       <div className="container-fluid d-flex justify-content-center text-white">
         <div className="col-md-6 mt-2 mb-2">
           <h1>Welcome to Spin N' Stone!</h1> 
@@ -132,9 +133,9 @@ const CustomerScreen = () => {
             value={order["pizza-type"]}
             onChange={e => setOrderDetails("pizza-type", e.target.value)} >
             <option value="" disabled>Select your option</option>
-            <option value="cheese">Cheese</option>
-            <option value="1-topping">1 Topping</option>
-            <option value="4-topping">4 Topping</option>
+            <option value="Cheese">Cheese</option>
+            <option value="1-Topping">1 Topping</option>
+            <option value="4-Topping">4 Topping</option>
           </select>
           <br />
 
@@ -240,7 +241,15 @@ const CustomerScreen = () => {
           <ul>
             {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
           </ul>
-
+          <label htmlFor="payment-method">Confirm Payment Method:</label>
+          <select name="payment-method" id="payment-method" value={order["payment-method"]}
+            onChange={e => setOrderDetails("payment-method", e.target.value)} >
+            <option value="" disabled>Select customer option</option>
+            <option value="Dining Dollars">Dining Dollars</option>
+            <option value="Retail Swipe">Retail Swipe</option>
+            <option value="Credit Card">Credit Card</option>
+          </select>
+          <br /> <br />
           <button onClick={submitOrder}>Submit your order</button>
         </div>
       </div>
