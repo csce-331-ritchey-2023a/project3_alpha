@@ -17,7 +17,8 @@ const ServerScreen = () => {
     "topping4": "",
     "sauce": "",
     "cheese": "",
-    "drizzle": ""
+    "drizzle": "",
+    "payment-method":""
   })
 
   const get_toppings = async () => {
@@ -119,38 +120,6 @@ const ServerScreen = () => {
         <Link to="/" className="link-style">               
           <h3>Return home</h3>            
         </Link>
-
-        <label htmlFor="pizza-type">Choose a pizza type:</label>
-        <select 
-          name="pizza-type" 
-          id="pizza-type" 
-          value={order["pizza-type"]}
-          onChange={e => setOrderDetails("pizza-type", e.target.value)} >
-          <option value="" disabled>Select customer option</option>
-          <option value="cheese">Cheese</option>
-          <option value="1-topping">1 Topping</option>
-          <option value="4-topping">4 Topping</option>
-        </select>
-        <br />
-
-        <label htmlFor="sauces">Choose a sauce:</label>
-        <select name="sauces" id="sauces" value={order.sauce} onChange={e => setOrderDetails("sauce", e.target.value)}>
-          <option value="" disabled>Select customer option</option>
-          {
-            sauces.map(sauce => (
-              <option value={sauce.sauceid} key={sauce.sauceid}>{sauce.sauceid}</option>
-            ))
-          }
-        </select>
-        <br />
-        
-        <div className="col-md-6 mt-2 mb-2">
-          <h1>Welcome to Spin N' Stone!</h1>
-
-          <Link to="/" className="link-style">               
-            <h3>Return home</h3>            
-          </Link>
-
           <label htmlFor="pizza-type">Choose a pizza type:</label>
           <select 
             name="pizza-type" 
@@ -158,9 +127,9 @@ const ServerScreen = () => {
             value={order["pizza-type"]}
             onChange={e => setOrderDetails("pizza-type", e.target.value)} >
             <option value="" disabled>Select customer option</option>
-            <option value="cheese">Cheese</option>
-            <option value="1-topping">1 Topping</option>
-            <option value="4-topping">4 Topping</option>
+            <option value="Cheese">Cheese</option>
+            <option value="1-Topping">1 Topping</option>
+            <option value="4-Topping">4 Topping</option>
           </select>
           <br />
 
@@ -265,10 +234,17 @@ const ServerScreen = () => {
           <ul>
             {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
           </ul>
-
+          <label htmlFor="payment-method">Confirm Payment Method:</label>
+          <select name="payment-method" id="payment-method" value={order["payment-method"]}
+            onChange={e => setOrderDetails("payment-method", e.target.value)} >
+            <option value="" disabled>Select customer option</option>
+            <option value="Dining Dollars">Dining Dollars</option>
+            <option value="Retail Swipe">Retail Swipe</option>
+            <option value="Credit Card">Credit Card</option>
+          </select>
+          <br /> <br />
           <button onClick={submitOrder}>Submit customer order</button>
         </div>
-      </div>
   )
 }
 

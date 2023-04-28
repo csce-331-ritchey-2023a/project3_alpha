@@ -18,7 +18,8 @@ const CustomerScreen = () => {
     "topping4": "",
     "sauce": "",
     "cheese": "",
-    "drizzle": ""
+    "drizzle": "",
+    "payment-method":""
   })
 
   const get_toppings = async () => {
@@ -91,7 +92,7 @@ const CustomerScreen = () => {
     else if (order['pizza-type'] === '4-topping'){
       set_price(7.49);
     }
-  },[]);
+  },[order['pizza-type']]);
 
   useEffect(() => {
     set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
@@ -131,7 +132,7 @@ const CustomerScreen = () => {
       <Link to="/" className="link-style">               
             <h3>Return home</h3>            
       </Link>
-      <img src="./white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+      <img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
       <div className="container-fluid d-flex justify-content-center text-white">
         <div className="col-md-6 mt-2 mb-2">
           <h1>Welcome to Spin N' Stone!</h1> 
@@ -250,10 +251,18 @@ const CustomerScreen = () => {
           <ul>
             {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
           </ul>
-          <div>Price: ${price}</div>
           <ul>
-            
+            <div>Price: ${price}</div>
           </ul>
+          <label htmlFor="payment-method">Confirm Payment Method:</label>
+          <select name="payment-method" id="payment-method" value={order["payment-method"]}
+            onChange={e => setOrderDetails("payment-method", e.target.value)} >
+            <option value="" disabled>Select customer option</option>
+            <option value="Dining Dollars">Dining Dollars</option>
+            <option value="Retail Swipe">Retail Swipe</option>
+            <option value="Credit Card">Credit Card</option>
+          </select>
+          <br /> <br />
           <button onClick={submitOrder}>Submit your order</button>
         </div>
       </div>
