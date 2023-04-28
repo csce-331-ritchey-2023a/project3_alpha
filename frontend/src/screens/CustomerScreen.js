@@ -8,6 +8,7 @@ const CustomerScreen = () => {
   const [cheeses, set_cheeses] = useState([]);
   const [sauces, set_sauces] = useState([]);
   const [drizzles, set_drizzles] = useState([]);
+  const [price, set_price] = useState(0);
 
   const [order, set_order] = useState({
     "pizza-type": "",
@@ -81,6 +82,15 @@ const CustomerScreen = () => {
     get_cheeses();
     get_sauces();
     get_drizzles();
+    if (order['pizza-type'] === 'cheese'){
+      set_price(6.45);
+    }
+    else if (order['pizza-type'] === '1-topping'){
+      set_price(7.49);
+    }
+    else if (order['pizza-type'] === '4-topping'){
+      set_price(7.49);
+    }
   },[]);
 
   useEffect(() => {
@@ -132,9 +142,9 @@ const CustomerScreen = () => {
             value={order["pizza-type"]}
             onChange={e => setOrderDetails("pizza-type", e.target.value)} >
             <option value="" disabled>Select your option</option>
-            <option value="cheese">Cheese</option>
-            <option value="1-topping">1 Topping</option>
-            <option value="4-topping">4 Topping</option>
+            <option value="cheese">Cheese - $6.45</option>
+            <option value="1-topping">1 Topping - $7.49</option>
+            <option value="4-topping">4 Topping - $8.85</option>
           </select>
           <br />
 
@@ -240,7 +250,10 @@ const CustomerScreen = () => {
           <ul>
             {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
           </ul>
-
+          <div>Price: ${price}</div>
+          <ul>
+            
+          </ul>
           <button onClick={submitOrder}>Submit your order</button>
         </div>
       </div>
