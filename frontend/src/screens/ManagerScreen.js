@@ -11,7 +11,7 @@ import { XZReport } from './components/XZReport';
 import ExcessReport from './components/ExcessReport';
 import { Xreport } from './components/Xreport';
 import GoogleTranslate from './components/GoogleTranslate';
-import { AddUpdateProducts } from './components/CRUD';
+import { AddUpdateProducts } from './components/UpdateManager';
 
 const ManagerScreen = () => {
   return (   

@@ -210,9 +210,9 @@ app.get('/update/:type/:name/:price/:amount', async (req, res) => {
   const price = req.params.price
 
   if (type == "cheeses") {
-    pool.query(`
-      update ${type} set amount=${amount}, customerprice=${price} where cheeseid='${name}';
-    `)
+    let  query = `UPDATE ${type} set amount=${amount}, customerprice=${price} where cheeseid='${name}';`
+    console.log(query)
+    pool.query(query)
   }
 
   if (req.params.type == "drizzles") {
@@ -223,7 +223,7 @@ app.get('/update/:type/:name/:price/:amount', async (req, res) => {
 
   if (req.params.type == "toppings") {
     pool.query(`
-      update ${type} set amount=${amount}, customerprice=${price} where topping_id='${name}';
+      update ${type} set amount=${amount}, customer_price=${price} where topping_id='${name}';
     `)
   }
 
@@ -242,25 +242,25 @@ app.get('/insert/:type/:name/:price/:amount', async (req, res) => {
 
   if (type == "cheeses") {
     pool.query(`
-      insert into ${type} (cheeseid, amount, customerprice) VALUES(${name}, ${amount}, ${price});
+      insert into ${type} (cheeseid, amount, customerprice) VALUES('${name}', ${amount}, ${price});
     `)
   }
 
   if (req.params.type == "drizzles") {
     pool.query(`
-      insert into ${type} (drizzleid, amount, customerprice) VALUES(${name}, ${amount}, ${price});
+      insert into ${type} (drizzleid, amount, customerprice) VALUES('${name}', ${amount}, ${price});
     `)
   }
 
   if (req.params.type == "toppings") {
     pool.query(`
-      insert '${type}' set amount=${amount}, customerprice=${price} where topping_id='${name}';
+      insert into ${type} (topping_id, amount, customer_price) VALUES('${name}', ${amount}, ${price});
     `)
   }
 
   if (req.params.type == "sauces") {
     pool.query(`
-      insert '${type}' into  amount=${amount}, customerprice=${price} where sauceid=${name};
+      insert into ${type} (sauceid, amount, customerprice) VALUES('${name}', ${amount}, ${price});
     `)
   }
 })
