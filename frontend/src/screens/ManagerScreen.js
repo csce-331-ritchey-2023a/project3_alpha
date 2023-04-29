@@ -17,19 +17,31 @@ import { AddUpdateProducts } from './components/UpdateManager';
 const ManagerScreen = () => {
   return (  
     <Fragment>
-      <div className = "container">
-        <GoogleTranslate />
-        <Link to="/" className="link-style">               
+      <div className="pg-color">
+        <Link to="/" className="logout-style">               
           <h3>Logout</h3>            
         </Link>
-        <AddUpdateProducts />
-        <ListTables />
-        <SalesReport />
-        <RestockReport />
-        <ExcessReport /> 
+        <img src="spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+        <div className="link-container">
+          <Link to="/sales-report" className="manager-link-style">
+            <h3>Sales Report</h3>
+          </Link>
 
-        <XZReport />
-        <Xreport />
+          <Link to="/restock-report" className="manager-link-style">
+            <h3>Restock Report</h3>
+          </Link>
+
+          <Link to="/excess-report" className="manager-link-style">
+            <h3>Excess Report</h3>
+          </Link>
+        </div>
+        <div className="container">
+          <GoogleTranslate />
+          <AddUpdateProducts />
+          <ListTables />
+          <XZReport />
+          <Xreport />
+        </div>
 
       </div>
     </Fragment>

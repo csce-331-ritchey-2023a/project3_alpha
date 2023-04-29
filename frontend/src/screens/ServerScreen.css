@@ -1,4 +1,16 @@
 .Spin-n-stone-logo {
     transform: scale(0.5);
-  }
+}
+
+.server-pg-color{
+    background-color: #b4b2b2;
+}
+
+.server-overflow{
+  overflow: hidden;
+}
+
+.container{
+  margin-top: 50px;
+}
   

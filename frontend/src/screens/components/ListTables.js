@@ -74,7 +74,7 @@ const ListTables = () => {
 
     return <Fragment>
         <div className = "row">
-            <div className = "col-md-6">
+            <div className = "col-md-6 mb-4">
                 <table className="table table-sm mt-5 text-center">
                     <caption className = "table-caption">Toppings</caption>
                     <thead>
@@ -97,7 +97,7 @@ const ListTables = () => {
                 </table>
             </div>
 
-            <div className = "col-md-6">
+            <div className = "col-md-6 mb-4">
                 <table className="table table-sm mt-5 text-center">
                     <caption className = "table-caption">Cheeses</caption>
                     <thead>
@@ -119,7 +119,7 @@ const ListTables = () => {
                 </table>
             </div>
 
-            <div className = "col-md-6">
+            <div className = "col-md-6 mb-4">
                 <table className="table table-sm mt-5 text-center">
                     <caption className = "table-caption">Sauces</caption>
                     <thead>
@@ -141,7 +141,7 @@ const ListTables = () => {
                 </table>
             </div>
 
-            <div className = "col-md-6">
+            <div className = "col-md-6 mb-4">
                 <table className="table table-sm mt-5 text-center">
                     <caption className = "table-caption">Drizzles</caption>
                     <thead>

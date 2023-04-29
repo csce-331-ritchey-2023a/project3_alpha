@@ -55,13 +55,14 @@ const ExcessReport = () => {
     }, [])
 
     return (
-        <>
+        <div>
+            <h3>Excess Report</h3>
             <label>
                 Begin Date:
                 <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder='mm-dd-yyyy HH:MM:SS' />
             </label>
             <button className="btn btn-primary" onClick={handleSubmit}>
-                Generate Report
+                Generate Excess Report
             </button>
 
             <table className="table table-sm mt-5 text-center">
@@ -94,7 +95,7 @@ const ExcessReport = () => {
                     })} 
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 
