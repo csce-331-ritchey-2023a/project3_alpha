@@ -68,7 +68,7 @@
 
 .rotate-pizza {
     display: block;
-    margin: 10px auto;
+    margin: 60px auto;
     width: 125%;
     animation: rotation 15s infinite linear;
     transform-origin: center;
