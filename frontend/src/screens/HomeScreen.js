@@ -1,10 +1,10 @@
 import './HomeScreen.css'
 import {Link} from 'react-router-dom'
-
 import React from 'react'
 import { useState, useEffect } from 'react';
 import GoogleTranslate from './components/GoogleTranslate';
 import jwt_decode from "jwt-decode";
+import {Container, Row, Col} from "react-bootstrap";
 
 const HomeScreen = () => {
   const [manager, setManager] = useState(false);
@@ -40,29 +40,48 @@ const HomeScreen = () => {
 
 
   return (
-    <div>
-        <h1>Welcome to Spin N' Stone!</h1>
+    <div className="homescreen">
 
+      <div id="header-container">
+        <div id="sign-in-container">
           <div id="signInDiv"></div>
           <GoogleTranslate />
-
-
+        </div>
+        <div id="links-container">
           <Link to="/customer" className="link-style">               
-            <h3>Go to customer page</h3>            
+            <h3>Start Your Order</h3>            
           </Link>
           {employee && (
             <Link to="/server" className="link-style">               
-              <h3>Go to server page</h3>            
+              <h3>Employees</h3>            
             </Link>
           )}
-          
           {manager && (
             <Link to="/manager" className="link-style">               
-              <h3>Go to manager page</h3>            
+              <h3>Managers</h3>            
             </Link>
           )}
+        </div>
+      </div>
 
-        
+      <img
+        className="bg-img"
+        src="black-brick-wall-texture.jpg"
+        alt="Background"
+      />
+
+      <Container fluid>
+        <Row>
+          <Col md={{ span: 4, offset: 3}}>
+            <img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 2, offset: 5}}>
+            <img src="pizza.png" className="rotate-pizza" alt="Rotating Pizza" />
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
