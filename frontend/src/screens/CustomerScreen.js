@@ -90,7 +90,7 @@ const CustomerScreen = () => {
       set_price(7.49);
     }
     else if (order['pizza-type'] === '4-topping'){
-      set_price(7.49);
+      set_price(8.85);
     }
   },[order['pizza-type']]);
 

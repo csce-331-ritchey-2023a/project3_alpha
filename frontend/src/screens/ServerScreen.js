@@ -8,6 +8,7 @@ const ServerScreen = () => {
   const [cheeses, set_cheeses] = useState([]);
   const [sauces, set_sauces] = useState([]);
   const [drizzles, set_drizzles] = useState([]);
+  const [price, set_price] = useState(0);
 
   const [order, set_order] = useState({
     "pizza-type": "",
@@ -81,7 +82,16 @@ const ServerScreen = () => {
     get_cheeses();
     get_sauces();
     get_drizzles();
-  },[]);
+    if (order['pizza-type'] === 'cheese'){
+      set_price(6.45);
+    }
+    else if (order['pizza-type'] === '1-topping'){
+      set_price(7.49);
+    }
+    else if (order['pizza-type'] === '4-topping'){
+      set_price(8.85);
+    }
+  },[order['pizza-type']]);
 
   useEffect(() => {
     set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
@@ -127,9 +137,9 @@ const ServerScreen = () => {
             value={order["pizza-type"]}
             onChange={e => setOrderDetails("pizza-type", e.target.value)} >
             <option value="" disabled>Select customer option</option>
-            <option value="Cheese">Cheese</option>
-            <option value="1-Topping">1 Topping</option>
-            <option value="4-Topping">4 Topping</option>
+            <option value="cheese">Cheese - $6.45</option>
+            <option value="1-topping">1 Topping - $7.49</option>
+            <option value="4-topping">4 Topping - $8.85</option>
           </select>
           <br />
 
@@ -233,6 +243,9 @@ const ServerScreen = () => {
           <h4>Customer order details</h4>
           <ul>
             {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
+          </ul>
+          <ul>
+            <div>Price: ${price}</div>
           </ul>
           <label htmlFor="payment-method">Confirm Payment Method:</label>
           <select name="payment-method" id="payment-method" value={order["payment-method"]}
