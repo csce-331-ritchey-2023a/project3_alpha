@@ -45,9 +45,10 @@ const HomeScreen = () => {
       <div id="header-container">
         <div id="sign-in-container">
           <div id="signInDiv"></div>
-          <GoogleTranslate />
+          
         </div>
         <div id="links-container">
+          <GoogleTranslate />
           <Link to="/customer" className="link-style">               
             <h3>Start Your Order</h3>            
           </Link>
