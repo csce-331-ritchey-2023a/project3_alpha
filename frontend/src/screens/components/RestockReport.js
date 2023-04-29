@@ -64,6 +64,7 @@ const RestockReport = () => {
 
   return (
     <Fragment>
+      <h3>Restock Report</h3>
       <button className="btn btn-primary" onClick={handleSubmit}>
         Generate Restock Report
       </button>

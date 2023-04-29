@@ -26,7 +26,8 @@ const AddUpdateProducts = () => {
     }
 
     return (
-        <>
+        <div>
+            <h3>Update/Add Ingredients</h3>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)}></input>
             <br />
@@ -54,7 +55,7 @@ const AddUpdateProducts = () => {
             </select>
             <button onClick={handleSubmit}>Submit</button>
             {(isSubmitted) ? <p>Submitted {name} {price} {amount} for the {type} category</p> : ''}
-        </>
+        </div>
     )
 }
 

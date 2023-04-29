@@ -44,6 +44,7 @@ const SalesReport = () => {
 
   return (
     <Fragment>
+      <h3>Sales Report</h3>
       <label>
         Start Date:
         <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
