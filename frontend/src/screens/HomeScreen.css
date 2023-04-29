@@ -1,6 +1,4 @@
-html, body{
-    overflow: hidden;
-}
+
 
 #header-container {
     display: flex;
@@ -48,9 +46,8 @@ html, body{
 }
 
 .homescreen{
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    
+    overflow: hidden;
 }
 
 .bg-img {
