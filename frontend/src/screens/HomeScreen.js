@@ -79,7 +79,7 @@ const HomeScreen = () => {
         </Row>
         <Row>
           <Col md={{ span: 2, offset: 5}}>
-            <img src="pizza.png" className="rotate-pizza" alt="Rotating Pizza" />
+            <img src="pizza.jpg" className="rotate-pizza" alt="Rotating Pizza" />
           </Col>
         </Row>
       </Container>
