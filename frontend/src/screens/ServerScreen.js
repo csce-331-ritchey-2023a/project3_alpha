@@ -128,7 +128,7 @@ const ServerScreen = () => {
         <h1>Welcome to the Server screen!</h1>
         <GoogleTranslate />
         <Link to="/" className="link-style">               
-          <h3>Return home</h3>            
+          <h3>Logout</h3>            
         </Link>
           <label htmlFor="pizza-type">Choose a pizza type:</label>
           <select 
