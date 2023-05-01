@@ -50,7 +50,7 @@ export const XZReport = () => {
 
   return (
     <Fragment>
-        <h3>XZ Report</h3>
+        <h3 className="z-header">Z Report</h3>
         <table className="table table-sm mt-5 text-center">
                     <caption className = "table-caption">Zreport Table</caption>
                     <thead>
