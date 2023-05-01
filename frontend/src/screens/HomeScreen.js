@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import GoogleTranslate from './components/GoogleTranslate';
 import jwt_decode from "jwt-decode";
 import {Container, Row, Col} from "react-bootstrap";
+import Weather from './components/Weather';
 
 const HomeScreen = () => {
   const [manager, setManager] = useState(false);
@@ -83,6 +84,10 @@ const HomeScreen = () => {
           </Col>
         </Row>
       </Container>
+      
+      <Weather />
+
+
     </div>
   )
 }
