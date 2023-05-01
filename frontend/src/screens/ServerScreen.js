@@ -134,22 +134,21 @@ const ServerScreen = () => {
         <img src="spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
         <h1>Welcome to the Server screen!</h1>
         <GoogleTranslate />
-            <label htmlFor="pizza-type">Choose a pizza type:</label>
+            <label htmlFor="pizza-type">Pizza Type</label>
+            <br />
             <select 
               name="pizza-type" 
-              id="pizza-type" 
+              id="server_buttons" multiple
               value={order["pizza-type"]}
               onChange={e => setOrderDetails("pizza-type", e.target.value)} >
-              <option value="" disabled>Select customer option</option>
               <option value="cheese">Cheese - $6.45</option>
               <option value="1-topping">1 Topping - $7.49</option>
               <option value="4-topping">4 Topping - $8.85</option>
             </select>
             <br />
 
-            <label htmlFor="sauces">Choose a sauce:</label>
-            <select name="sauces" id="sauces" value={order.sauce} onChange={e => setOrderDetails("sauce", e.target.value)}>
-              <option value="" disabled>Select customer option</option>
+            <label htmlFor="sauces">Sauce</label> <br />
+            <select name="sauces" id="server_buttons" multiple value={order.sauce} onChange={e => setOrderDetails("sauce", e.target.value)}>
               {
                 sauces.map(sauce => (
                   <option value={sauce.sauceid} key={sauce.sauceid}>{sauce.sauceid}</option>
@@ -158,9 +157,8 @@ const ServerScreen = () => {
             </select>
             <br />
             
-            <label htmlFor="cheeses">Choose a cheese:</label>
-            <select name="cheeses" id="cheese" value={order.cheese} onChange={e => setOrderDetails("cheese", e.target.value)}>
-              <option value="" disabled>Select customer option</option>
+            <label htmlFor="cheeses">Cheese:</label> <br />
+            <select name="cheeses" id="server_buttons" multiple value={order.cheese} onChange={e => setOrderDetails("cheese", e.target.value)}>
               {
                 cheeses.map(cheese => (
                   <option value={cheese.cheeseid} key={cheese.cheeseid}>{cheese.cheeseid}</option>
@@ -169,9 +167,8 @@ const ServerScreen = () => {
             </select>
             <br />
 
-            <label htmlFor="drizzles">Choose a drizzle:</label>
-            <select name="drizzles" id="drizzles" value={order.drizzle} onChange={e => setOrderDetails("drizzle", e.target.value)}>
-              <option value="" disabled>Select customer option</option>
+            <label htmlFor="drizzles">Drizzle:</label> <br />
+            <select name="drizzles" id="server_buttons" multiple value={order.drizzle} onChange={e => setOrderDetails("drizzle", e.target.value)}>
               {
                 drizzles.map(drizzle => (
                   <option value={drizzle.drizzleid} key={drizzle.drizzleid}>{drizzle.drizzleid}</option>
@@ -183,9 +180,8 @@ const ServerScreen = () => {
             {
               (order['pizza-type'] === "1-topping" || order['pizza-type'] === "4-topping") ? (
                 <>
-                  <label htmlFor="toppings">Select customer topping:</label>
-                  <select name="toppings" id="toppings" value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
-                  <option value="" disabled>Select customer option</option>
+                  <label htmlFor="toppings">Topping:</label> <br />
+                  <select name="toppings" id="server_buttons" multiple value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -199,9 +195,8 @@ const ServerScreen = () => {
             {
               (order['pizza-type'] === "4-topping") ? (
                 <>
-                  <label htmlFor="toppings">Select customer topping:</label>
-                  <select name="toppings" id="toppings" value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
-                  <option value="" disabled>Select customer option</option>
+                  <label htmlFor="toppings">Topping:</label> <br />
+                  <select name="toppings" id="server_buttons" multiple value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -215,9 +210,8 @@ const ServerScreen = () => {
             {
               (order['pizza-type'] === "4-topping") ? (
                 <>
-                  <label htmlFor="toppings">Choose customer topping:</label>
-                  <select name="toppings" id="toppings" value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
-                  <option value="" disabled>Select customer option</option>
+                  <label htmlFor="toppings">Topping:</label> <br />
+                  <select name="toppings" id="server_buttons" multiple value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -231,9 +225,8 @@ const ServerScreen = () => {
             {
               (order['pizza-type'] === "4-topping") ? (
                 <>
-                  <label htmlFor="toppings">Choose customer topping:</label>
-                  <select name="toppings" id="toppings" value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
-                  <option value="" disabled>Select customer option</option>
+                  <label htmlFor="toppings">Topping:</label> <br />
+                  <select name="toppings" id="server_buttons" multiple value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -251,10 +244,9 @@ const ServerScreen = () => {
             <ul>
               <div>Price: ${price}</div>
             </ul>
-            <label htmlFor="payment-method">Confirm Payment Method:</label>
-            <select name="payment-method" id="payment-method" value={order["payment-method"]}
+            <label htmlFor="payment-method">Payment Method</label> <br />
+            <select name="payment-method" id="server_buttons" multiple value={order["payment-method"]}
               onChange={e => setOrderDetails("payment-method", e.target.value)} >
-              <option value="" disabled>Select customer option</option>
               <option value="Dining Dollars">Dining Dollars</option>
               <option value="Retail Swipe">Retail Swipe</option>
               <option value="Credit Card">Credit Card</option>
