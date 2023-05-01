@@ -38,9 +38,7 @@ const SalesReport = () => {
     
   };
 
-  const pizzaCount = countPizzas();
-  console.log(pizzaCount)
-  
+  const pizzaCount = countPizzas();  
 
   return (
     <Fragment>

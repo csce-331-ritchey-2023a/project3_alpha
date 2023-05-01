@@ -122,7 +122,6 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
   try{
     const checkQuery = `SELECT COUNT(*) FROM zreport`;
     const queryRes = await pool.query(checkQuery);
-    console.log(parseInt(queryRes.rows[0].count))
     if (parseInt(queryRes.rows[0].count) == 0){ // if no records in z report table
       const s = `SELECT SUM(PRICE) FROM transactions`;
       const q = await pool.query(s);
@@ -141,14 +140,11 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
       let lastReport = new Date(Date.parse(item.rows[0].reportdate.toString()))
       let currentTime = new Date(Date.now())
 
-      console.log("last report", lastReport, currentTime)
-
       // Check if they're the same date
       if (lastReport.getFullYear() === currentTime.getFullYear() &&
           lastReport.getMonth() === currentTime.getMonth() &&
           lastReport.getDate() === currentTime.getDate()) {
 
-          console.log("hiiii")
           await pool.query(`DELETE from zreport WHERE reportid=${item.rows[0].reportid}`)
       }
 
@@ -157,13 +153,10 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
       lastReport = Date.parse(item.rows[0].max.toString())
 
       let stmt2 = `SELECT SUM(price) FROM transactions WHERE transactiontime BETWEEN (to_timestamp(${lastReport} / 1000.0)) AND (to_timestamp(${currentTime} / 1000.0))`;
-      console.log("statement 2: ", stmt2)
 
       const item2 = await pool.query(stmt2);
 
       let sum = item2.rows[0].sum;
-
-      console.log(sum)
 
       if (sum == null){
         sum = "0.00"

@@ -11,7 +11,6 @@ const AddUpdateProducts = () => {
     const [isSubmitted, setIsSubmitted] = useState(false)
 
     useEffect(() => {
-        console.log(name, price, amount, type)
     }, [name, price, amount, type])
 
     let handleSubmit = async () => {
