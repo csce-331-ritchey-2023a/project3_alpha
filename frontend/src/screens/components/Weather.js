@@ -37,12 +37,12 @@ function Weather() {
   return (
     <div className="App">
       <header className="d-flex justify-content-center align-items-center">
-        <h2>React Weather App</h2>
+        <h2 className='head' >Check Your Weather to Safely Get to Us!</h2>
       </header>
       <div className="container">
         <div className="mt-3 d-flex flex-column justify-content-center align-items-center">
           <div class="col-auto">
-            <label for="location-name" class="col-form-label">
+            <label for="location-name" class="col-form-label" className='head'>
               Enter Location :
             </label>
           </div>
@@ -83,13 +83,13 @@ function Weather() {
                   <p>
                     <i class="fas fa-temperature-low "></i>{' '}
                     <strong>
-                      {kelvinToFarenheit(apiData.main.temp_min)}&deg; F
+                       Low: {kelvinToFarenheit(apiData.main.temp_min)}&deg; F
                     </strong>
                   </p>
                   <p>
                     <i className="fas fa-temperature-high"></i>{' '}
                     <strong>
-                      {kelvinToFarenheit(apiData.main.temp_max)}&deg; F
+                      High: {kelvinToFarenheit(apiData.main.temp_max)}&deg; F
                     </strong>
                   </p>
                 </div>
