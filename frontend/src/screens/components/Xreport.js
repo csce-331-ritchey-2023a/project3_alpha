@@ -25,15 +25,12 @@ export const Xreport = () => {
 
   return (
     <Fragment>
-      <div className="text-center">
-        <h1 className="xreport-header">Xreport</h1>
-        <h3>Current Order Totals</h3>
-        <p>{xreport}</p>
-        <button className="btn btn-primary" onClick={handleSubmit} >
-          Generate Xreport
-        </button>
-      </div>
-      
+      <h1 className="xreport-header">Xreport</h1>
+      <h3>Current Order Totals</h3>
+      <p>{xreport}</p>
+      <button className="btn btn-primary" onClick={handleSubmit} >
+        Generate Xreport
+      </button>
     </Fragment>
   )
 }

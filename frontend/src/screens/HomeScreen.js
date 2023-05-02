@@ -14,6 +14,8 @@ const HomeScreen = () => {
   function handleCallbackResponse(response) {
     //console.log("Encoded JWT token:"+ response.credential)
     var user = jwt_decode(response.credential)
+    console.log(user)
+    console.log(user.hd)
     if (user.hd == "tamu.edu"){
       setManager(true);
       setEmployee(false);
@@ -77,15 +79,8 @@ const HomeScreen = () => {
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 5, offset: 4}}>
-            <div className="homepage-address">
-              Memorial Student Center, 275 Joe Routt Blvd, College Station, TX 77840
-            </div>
-          </Col>
-        </Row>
-        <Row>
           <Col md={{ span: 2, offset: 5}}>
-            <img src="pizza.png" className="rotate-pizza" alt="Rotating Pizza" />
+            <img src="pizza.jpg" className="rotate-pizza" alt="Rotating Pizza" />
           </Col>
         </Row>
       </Container>

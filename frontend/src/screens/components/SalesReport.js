@@ -38,28 +38,24 @@ const SalesReport = () => {
     
   };
 
-  const pizzaCount = countPizzas();  
+  const pizzaCount = countPizzas();
+  console.log(pizzaCount)
+  
 
   return (
     <Fragment>
-      <h3 className="text-center">Sales Report</h3>
-      <div className="text-center">
-        <label>
-          Start Date:
-          <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-        </label>
-        <label>
-          End Date:
-          <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+      <h3>Sales Report</h3>
+      <label>
+        Start Date:
+        <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
       </label>
-      </div>
-      
-      <div className="text-center mt-2">
-        <button className="btn btn-primary" onClick={handleSubmit}>
-          Generate Sales Report
-        </button>
-
-      </div>
+      <label>
+        End Date:
+        <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+      </label>
+      <button className="btn btn-primary" onClick={handleSubmit}>
+        Generate Sales Report
+      </button>
 
       <table className="table">
         <thead>

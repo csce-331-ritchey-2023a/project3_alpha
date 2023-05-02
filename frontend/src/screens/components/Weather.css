@@ -4,11 +4,3 @@
 .head {
   color: whitesmoke;
 }
-
-.App{
-  transform: translateX(2%);
-}
-
-.card{
-  background-color: rgb(199, 198, 198);
-}

@@ -84,22 +84,20 @@ app.post("/transaction", async (req, res) => { //Submits a customer's order into
     console.error(err.message)
   }
 })
-//  //APP PUT
-// app.put("/cheeses", async (req, res) => {
-//   try {
-//     console.log(req.query)
-//     // console.log(req.query)
-//     let stmt = conn.prepareStatement("UPDATE cheeses SET amount = amount - 1 WHERE cheeseid = ?");
+ //APP PUT
+app.put("/cheeses", async (req, res) => {
+  try {
+    console.log(req.query)
 
-//     // console.log(stmt)
-//     await pool.query(stmt)
+    console.log(stmt)
+    await pool.query(stmt)
     
-//     // console.log('successfully added!')
-//   }
-//   catch (err) {
-//     console.error(err.message)
-//   }
-// })
+    console.log('successfully added!')
+  }
+  catch (err) {
+    console.error(err.message)
+  }
+})
 
 //TODO: app.put can be decremented in inventory
 
@@ -108,7 +106,7 @@ app.get('/a/b/c/d/zreport', async (req,res) => {
     const stmt = `SELECT * FROM zreport`;
     const item = await pool.query(stmt);
 
-    // console.log(item.rows)
+    console.log(item.rows)
     res.json(item.rows);
 
   } catch(err){
@@ -122,6 +120,7 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
   try{
     const checkQuery = `SELECT COUNT(*) FROM zreport`;
     const queryRes = await pool.query(checkQuery);
+    console.log(parseInt(queryRes.rows[0].count))
     if (parseInt(queryRes.rows[0].count) == 0){ // if no records in z report table
       const s = `SELECT SUM(PRICE) FROM transactions`;
       const q = await pool.query(s);
@@ -134,30 +133,17 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
       res.json(item.rows);
       
     } else {
-      let stmt = `SELECT * from zreport order by reportdate desc limit 1;`;
-      let item = await pool.query(stmt);
+      const stmt = `SELECT MAX(reportDate) FROM zreport`;
+      const item = await pool.query(stmt);
 
-      let lastReport = new Date(Date.parse(item.rows[0].reportdate.toString()))
-      let currentTime = new Date(Date.now())
+      const lastReport = Date.parse(item.rows[0].max.toString())
+      const currentTime = Date.now()
 
-      // Check if they're the same date
-      if (lastReport.getFullYear() === currentTime.getFullYear() &&
-          lastReport.getMonth() === currentTime.getMonth() &&
-          lastReport.getDate() === currentTime.getDate()) {
 
-          await pool.query(`DELETE from zreport WHERE reportid=${item.rows[0].reportid}`)
-      }
-
-      item = await pool.query(`SELECT MAX(reportDate) FROM zreport`)
-      currentTime = Date.now()
-      lastReport = Date.parse(item.rows[0].max.toString())
-
-      let stmt2 = `SELECT SUM(price) FROM transactions WHERE transactiontime BETWEEN (to_timestamp(${lastReport} / 1000.0)) AND (to_timestamp(${currentTime} / 1000.0))`;
-
+      const stmt2 = `SELECT SUM(price) FROM transactions WHERE transactiontime BETWEEN (to_timestamp(${lastReport} / 1000.0)) AND (to_timestamp(${currentTime} / 1000.0))`;
       const item2 = await pool.query(stmt2);
 
       let sum = item2.rows[0].sum;
-
       if (sum == null){
         sum = "0.00"
       }
@@ -169,7 +155,7 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
     }
 
   } catch(err){
-    console.error("line 160", err.message)
+    console.error(err.message)
   }
 });
 
@@ -191,6 +177,8 @@ app.get('/a/b/c/d/xreport/insert', async (req,res) => {
       const stmt = `INSERT INTO xreport (lastreport) VALUES((to_timestamp(${currentTime} / 1000.0)))`;
       await pool.query(stmt);
       res.json(q.rows[0])
+
+
 
     } else {
       console.log("there are xreports")
@@ -232,7 +220,7 @@ app.get('/update/:type/:name/:price/:amount', async (req, res) => {
 
   if (type == "cheeses") {
     let  query = `UPDATE ${type} set amount=${amount}, customerprice=${price} where cheeseid='${name}';`
-    // console.log(query)
+    console.log(query)
     pool.query(query)
   }
 

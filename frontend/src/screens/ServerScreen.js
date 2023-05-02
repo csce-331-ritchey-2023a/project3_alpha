@@ -100,6 +100,7 @@ const ServerScreen = () => {
 
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
+    console.log(order)
   }
 
   const submitOrder = async () => {
