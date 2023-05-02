@@ -26,7 +26,7 @@ const ManagerScreen = () => {
         <Link to="/" className="logout-style">               
           <h3>Logout</h3>            
         </Link>
-        <img src="spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+        <img src="https://api.dineoncampus.com/files/images/cf0c18dd-4956-4c89-9e39-f27663fb4efb.png" className="spin-n-stone-logo" alt="logo"/>
         <div className="link-container">
           <Link to="/sales-report" className="manager-link-style">
             <h3>Sales Report</h3>

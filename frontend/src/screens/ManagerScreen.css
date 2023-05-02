@@ -1,3 +1,4 @@
+
 .link-container {
     display: flex;
     justify-content: center;
@@ -29,11 +30,17 @@
     
 }
 
-
 .pg-color{
     background-color: #bebdbd;
 }
 
 .manager-screen{
     overflow: hidden;
+}
+
+.spin-n-stone-logo {
+    transform: scale(0.5);
+    margin-left: 205px;
+    margin-top: -150px;
+  
 }

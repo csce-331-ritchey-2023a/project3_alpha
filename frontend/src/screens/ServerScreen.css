@@ -1,5 +1,8 @@
 .Spin-n-stone-logo {
     transform: scale(0.5);
+    margin-left: -100px;
+    margin-bottom: -80px;
+  
 }
 
 .server-pg-color{
@@ -11,7 +14,7 @@
 }
 
 .container{
-  margin-top: 10px;
+  margin-top: -150px;
 }
 
 #server_buttons{

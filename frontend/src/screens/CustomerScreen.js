@@ -177,13 +177,13 @@ const CustomerScreen = () => {
 
   return (
     <div className="customer-background" style={{
-      backgroundImage: "url(/black-brick-wall-texture.jpg)",
+      backgroundImage: "url(https://jooinn.com/images/dark-bricks-texture-5.jpg)",
       
     }}>
       <Link to="/" className="link-style">               
             <h3>Return home</h3>            
       </Link>
-      <img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+      <img src="https://i.ibb.co/LrJNtj1/white-spinnstone-logo.png" className="Spin-n-stone-logo" alt="logo"/>
       <div className="d-flex justify-content-center">
         
         
@@ -321,7 +321,7 @@ const CustomerScreen = () => {
           </div>
         </div>
 
-        <img src="pizza.jpg" className="customer-pizza" alt="pizza image"/>
+        <img src="https://scontent-dfw5-1.xx.fbcdn.net/v/t1.6435-9/125435450_10164451802510582_8697566316757459415_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=vqd-g7USBcMAX9udu9G&_nc_ht=scontent-dfw5-1.xx&oh=00_AfDt8IKLf6a8i_aTSRaLt9oOP5S0AC9q8nHXB_Iypt2m8Q&oe=6478A1EA" className="customer-pizza" alt="pizza image"/>
       </div>
     </div>
   )

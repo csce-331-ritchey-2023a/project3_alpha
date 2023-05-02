@@ -95,14 +95,14 @@ const HomeScreen = () => {
 
       <img
         className="bg-img"
-        src="black-brick-wall-texture.jpg"
+        src="https://jooinn.com/images/dark-bricks-texture-5.jpg"
         alt="Background"
       />
 
       <Container fluid>
         <Row>
           <Col md={{ span: 4, offset: 3}}>
-            <img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+            <img src="https://i.ibb.co/LrJNtj1/white-spinnstone-logo.png" className="Spin-n-stone-logo" alt="logo"/>
           </Col>
         </Row>
         <Row>
@@ -114,7 +114,7 @@ const HomeScreen = () => {
         </Row>
         <Row>
           <Col md={{ span: 2, offset: 5}}>
-            <img src="pizza.png" className="rotate-pizza" alt="Rotating Pizza" />
+            <img src="https://cdn.jemediacorp.com/jemediacorp/uploads/2021/06/pizza-1-300x290.png" className="rotate-pizza" alt="Rotating Pizza" />
           </Col>
         </Row>
       </Container>

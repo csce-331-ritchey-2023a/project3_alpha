@@ -1,4 +1,6 @@
-
+.Spin-n-stone-logo {
+    transform: scale(0.5);
+}
 
 #header-container {
     display: flex;
