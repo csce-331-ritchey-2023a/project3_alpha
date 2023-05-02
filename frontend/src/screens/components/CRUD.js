@@ -10,12 +10,11 @@ const AddUpdateProducts = () => {
 
     const [isSubmitted, setIsSubmitted] = useState(false)
 
-    // useEffect(() => {
-    //     console.log(name, price, amount, type)
-    // }, [name, price, amount, type])
+    useEffect(() => {
+    }, [name, price, amount, type])
 
     let handleSubmit = async () => {
-        if (operation == "update") {
+        if (operation == "addnew") {
             await fetch(`http://localhost:5000/update/${type}/${name}/${price}/${amount}`)
         }
         else {
@@ -26,8 +25,7 @@ const AddUpdateProducts = () => {
     }
 
     return (
-        <div>
-            <h3>Update/Add Ingredients</h3>
+        <>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)}></input>
             <br />
@@ -42,7 +40,7 @@ const AddUpdateProducts = () => {
 
             <label htmlFor="type" value={type}>Type</label>
             <select id="type" value={type} onChange={e => setType(e.target.value)} defaultValue="">
-                <option value="" disabled>Pick an Ingredient</option>
+                <option value="" disabled>Pick a topping</option>
                 <option value="cheeses">Cheeses</option>
                 <option value="toppings">Toppings</option>
                 <option value="sauces">Sauces</option>
@@ -55,7 +53,7 @@ const AddUpdateProducts = () => {
             </select>
             <button onClick={handleSubmit}>Submit</button>
             {(isSubmitted) ? <p>Submitted {name} {price} {amount} for the {type} category</p> : ''}
-        </div>
+        </>
     )
 }
 
