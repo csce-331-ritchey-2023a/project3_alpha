@@ -1,11 +1,24 @@
 import React, { Fragment, useState } from "react";
 
+
+/**
+ * Displays the Restock Report.
+ * @namespace RestockReport
+ * @component 
+ */
 const RestockReport = () => {
   const [toppingData, setToppingData] = useState([]);
   const [cheeseData, setCheeseData] = useState([]);
   const [drizzleData, setDrizzleData] = useState([]);
   const [sauceData, setSauceData] = useState([]);
 
+  /**
+   * Fetches data for all tables from the server and sets states for each data type.
+   * @function
+   * @memberof RestockReport
+   * @async
+   * @returns {void}
+   */
   const handleSubmit = async () => {
     const topping_response = await fetch(`http://localhost:5000/toppings`);
     const cheese_response = await fetch(`http://localhost:5000/cheeses`);
@@ -21,6 +34,10 @@ const RestockReport = () => {
     setSauceData(sauce_data);
   };
 
+  /**
+   * Counts the inventory of all tables within the database.
+   * @returns {Object} An object with keys for each type of inventory and their respective IDs, amounts, and recommended restocking amount.
+   */
   const countInventory = () => {
     let toppingRecommendation = 90;
     let cheeseRecommendation = 125;

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
+/**
+ * Handles functionality for updating/inserting ingredients.
+ * @namespace AddUpdateProducts
+ * @component
+ */
+
 const AddUpdateProducts = () => {
 
     const [name, setName] = useState("")
@@ -13,6 +19,11 @@ const AddUpdateProducts = () => {
     useEffect(() => {
     }, [name, price, amount, type])
 
+    /**
+     * Function for handling inserting/updating ingredients.
+     * @memberof AddUpdateProducts
+     * @function
+     */
     let handleSubmit = async () => {
         if (operation == "addnew") {
             await fetch(`http://localhost:5000/update/${type}/${name}/${price}/${amount}`)

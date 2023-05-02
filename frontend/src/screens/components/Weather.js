@@ -5,6 +5,11 @@ import countries from 'i18n-iso-countries';
 
 countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
 
+/**
+ * Adds Google Weather API to the website.
+ * @namespace Weather
+ * @component
+ */
 function Weather() {
   // State
   const [apiData, setApiData] = useState({});

@@ -1,10 +1,24 @@
 import React, { Fragment, useState } from "react";
 
+
+/**
+ * Displays the Sales Report.
+ * @component
+ * @namespace SalesReport
+ */
 const SalesReport = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [salesData, setSalesData] = useState([]);
 
+  /**
+   * Handles form submission to retrieve sales data within the given date range.
+   * @async
+   * @function handleSubmit
+   * @memberof SalesReport
+   * @returns {Promise<void>} Resolves after retrieving and setting sales data.
+   * 
+   */
   const handleSubmit = async () => {
     const formattedStartDate = startDate + " 00:00:00";
     const formattedEndDate = endDate + " 23:59:59";
@@ -13,6 +27,11 @@ const SalesReport = () => {
     setSalesData(data);
   };
 
+  /**
+   * Counts the number of pizzas sold by type and their total price.
+   * @memberof SalesReport
+   * @returns {Object} An object containing the count and total price of each pizza type.
+   */
   const countPizzas = () => {
     let cheeseCount = 0;
     let cheesePrice = 0.0;

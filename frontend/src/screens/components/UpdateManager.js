@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
+
+/**
+ * Adds and updates products within the Manager side.
+ * @namespace AddUpdateProducts
+ * @component
+ */
 const AddUpdateProducts = () => {
 
     const [name, setName] = useState("")
@@ -13,7 +19,13 @@ const AddUpdateProducts = () => {
     // useEffect(() => {
     //     console.log(name, price, amount, type)
     // }, [name, price, amount, type])
-
+    /**
+     * Fetches data from each table if updating is needed.
+     * @async
+     * @function handleSubmit
+     * @memberof AddUpdateProducts
+     * 
+     */
     let handleSubmit = async () => {
         if (operation == "update") {
             await fetch(`http://localhost:5000/update/${type}/${name}/${price}/${amount}`)
