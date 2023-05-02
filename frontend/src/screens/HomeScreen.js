@@ -102,7 +102,7 @@ const HomeScreen = () => {
       <Container fluid>
         <Row>
           <Col md={{ span: 4, offset: 3}}>
-            <img src="https://i.ibb.co/LrJNtj1/white-spinnstone-logo.png" className="Spin-n-stone-logo" alt="logo"/>
+            <img src="https://i.ibb.co/LrJNtj1/white-spinnstone-logo.png" className="Spin-n-stone-logo-homescreen mx-auto" alt="logo"/>
           </Col>
         </Row>
         <Row>
@@ -113,13 +113,16 @@ const HomeScreen = () => {
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 2, offset: 5}}>
+          <Col md={{ span: 4, offset: 4}}>
             <img src="https://cdn.jemediacorp.com/jemediacorp/uploads/2021/06/pizza-1-300x290.png" className="rotate-pizza" alt="Rotating Pizza" />
           </Col>
         </Row>
       </Container>
       
-      <Weather />
+      <div>
+        <Weather />
+      </div>
+      
 
 
     </div>

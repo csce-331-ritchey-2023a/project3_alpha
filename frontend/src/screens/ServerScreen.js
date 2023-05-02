@@ -178,7 +178,7 @@ const ServerScreen = () => {
     
       <div className="server-overflow container">
         
-        <img src="https://api.dineoncampus.com/files/images/cf0c18dd-4956-4c89-9e39-f27663fb4efb.png" className="Spin-n-stone-logo" alt="logo"/>
+        <img src="https://api.dineoncampus.com/files/images/cf0c18dd-4956-4c89-9e39-f27663fb4efb.png" className="Spin-n-stone-logo-server" alt="logo"/>
         <h1>Welcome to the Server screen!</h1>
         <GoogleTranslate />
             <label htmlFor="pizza-type">Pizza Type</label>

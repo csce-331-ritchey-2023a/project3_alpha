@@ -1,12 +1,10 @@
-.Spin-n-stone-logo {
-    transform: scale(0.5);
-    margin-left: -100px;
-    margin-bottom: -80px;
-  
+.Spin-n-stone-logo-server {
+  margin-left: -70px;
+  transform: scale(0.5);
 }
 
 .server-pg-color{
-    background-color: #b4b2b2;
+    background-color: #8d8b8b;
 }
 
 .server-overflow{

@@ -26,8 +26,8 @@ const ManagerScreen = () => {
         <Link to="/" className="logout-style">               
           <h3>Logout</h3>            
         </Link>
-        <img src="https://api.dineoncampus.com/files/images/cf0c18dd-4956-4c89-9e39-f27663fb4efb.png" className="spin-n-stone-logo" alt="logo"/>
-        <div className="link-container">
+        <img src="https://api.dineoncampus.com/files/images/cf0c18dd-4956-4c89-9e39-f27663fb4efb.png" className="Spin-n-stone-logo-manager" alt="logo"/>
+        <div className="link-container mx-auto">
           <Link to="/sales-report" className="manager-link-style">
             <h3>Sales Report</h3>
           </Link>
@@ -49,7 +49,7 @@ const ManagerScreen = () => {
           </Link>
 
         </div>
-        <div className="container">
+        <div className="container mt-3">
           <GoogleTranslate />
           <AddUpdateProducts />
           <ListTables />
