@@ -9,7 +9,7 @@
     margin: 0 auto;
     position: flex;
     top: 0;
-    transform: translateX(-50%);
+    transform: scale(0.5);
 }
 
 .customer-pizza{
