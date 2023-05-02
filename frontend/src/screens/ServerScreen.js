@@ -37,7 +37,7 @@ const ServerScreen = () => {
   const get_toppings = async () => {
       try{
 
-          const response = await fetch("http://localhost:5000/toppings");
+          const response = await fetch("https://project3-alpha.onrender.com/toppings");
           const json_data = await response.json();
 
           //console.log(json_data)
@@ -59,7 +59,7 @@ const ServerScreen = () => {
   const get_cheeses = async () => {
       try{
 
-          const response = await fetch("http://localhost:5000/cheeses");
+          const response = await fetch("https://project3-alpha.onrender.com/cheeses");
           const json_data = await response.json();
 
           //console.log(json_data)
@@ -80,7 +80,7 @@ const ServerScreen = () => {
   const get_sauces = async () => {
       try{
 
-          const response = await fetch("http://localhost:5000/sauces");
+          const response = await fetch("https://project3-alpha.onrender.com/sauces");
           const json_data = await response.json();
 
           //console.log(json_data)
@@ -100,7 +100,7 @@ const ServerScreen = () => {
    */
   const get_drizzles = async () => {
       try{
-          const response = await fetch("http://localhost:5000/drizzles");
+          const response = await fetch("https://project3-alpha.onrender.com/drizzles");
           const json_data = await response.json();
 
           //console.log(json_data)
@@ -152,7 +152,7 @@ const ServerScreen = () => {
    */
   const submitOrder = async () => {
     try {
-      await fetch(`http://localhost:5000/transaction?` + new URLSearchParams({
+      await fetch(`https://project3-alpha.onrender.com/transaction?` + new URLSearchParams({
         "pizza-type": order["pizza-type"],
         sauce: order.sauce,
         cheese: order.cheese ,
