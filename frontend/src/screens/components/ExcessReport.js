@@ -28,7 +28,7 @@ const ExcessReport = () => {
 
         const formattedEndDate = `${(d.getMonth()+1).padLeft()}-${d.getDate().padLeft()}-${d.getFullYear().padLeft()} ${d.getHours().padLeft()}:${d.getMinutes().padLeft()}:${d.getSeconds().padLeft()}`
 
-        const t = await (await fetch(`http://localhost:5000/transactions/${formattedStartDate}/${formattedEndDate}`)).json();
+        const t = await (await fetch(`https://project3-alpha.onrender.com/transactions/${formattedStartDate}/${formattedEndDate}`)).json();
         setTransactions(t)
 
         for (const key of Object.keys(edibles)) {
@@ -44,10 +44,10 @@ const ExcessReport = () => {
 
         (async () => {
             const temp = {}
-            const toppings = await (await fetch(`http://localhost:5000/toppings`)).json()
-            const cheeses = await (await fetch(`http://localhost:5000/cheeses`)).json();
-            const drizzles = await (await fetch(`http://localhost:5000/drizzles`)).json();
-            const sauces = await (await fetch(`http://localhost:5000/sauces`)).json();
+            const toppings = await (await fetch(`https://project3-alpha.onrender.com/toppings`)).json()
+            const cheeses = await (await fetch(`https://project3-alpha.onrender.com/cheeses`)).json();
+            const drizzles = await (await fetch(`https://project3-alpha.onrender.com/drizzles`)).json();
+            const sauces = await (await fetch(`https://project3-alpha.onrender.com/sauces`)).json();
             
             // toppings.forEach((e) => setEdibles({...edibles, [e.topping_id]: [e.amount, 0]}) )
             // cheeses.forEach((e) => setEdibles({...edibles, [e.cheeseid]: [e.amount, 0] }) )

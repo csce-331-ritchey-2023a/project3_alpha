@@ -22,7 +22,7 @@ const SalesReport = () => {
   const handleSubmit = async () => {
     const formattedStartDate = startDate + " 00:00:00";
     const formattedEndDate = endDate + " 23:59:59";
-    const response = await fetch(`http://localhost:5000/transactions/:${formattedStartDate}/:${formattedEndDate}`);
+    const response = await fetch(`https://project3-alpha.onrender.com/transactions/:${formattedStartDate}/:${formattedEndDate}`);
     const data = await response.json();
     setSalesData(data);
   };
