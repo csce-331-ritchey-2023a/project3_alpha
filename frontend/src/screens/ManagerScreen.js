@@ -17,7 +17,7 @@ import { AddUpdateProducts } from './components/UpdateManager';
 const ManagerScreen = () => {
   return (  
     <Fragment>
-      <div className="pg-color manager-screen">
+      <div className="pg-color">
         <Link to="/" className="logout-style">               
           <h3>Logout</h3>            
         </Link>
@@ -34,20 +34,13 @@ const ManagerScreen = () => {
           <Link to="/excess-report" className="manager-link-style">
             <h3>Excess Report</h3>
           </Link>
-
-          <Link to="/z-report" className="manager-link-style">
-            <h3>Z Report</h3>
-          </Link>
-
-          <Link to="/x-report" className="manager-link-style">
-            <h3>X Report</h3>
-          </Link>
-
         </div>
         <div className="container">
           <GoogleTranslate />
           <AddUpdateProducts />
           <ListTables />
+          <XZReport />
+          <Xreport />
         </div>
 
       </div>

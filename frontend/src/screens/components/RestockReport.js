@@ -64,12 +64,10 @@ const RestockReport = () => {
 
   return (
     <Fragment>
-      <div className="text-center">
-        <h3 className="text-center">Restock Report</h3>
-        <button className="btn btn-primary" onClick={handleSubmit}>
-          Generate Restock Report
-        </button>
-      </div>
+      <h3>Restock Report</h3>
+      <button className="btn btn-primary" onClick={handleSubmit}>
+        Generate Restock Report
+      </button>
 
       <table className="table">
         <thead>

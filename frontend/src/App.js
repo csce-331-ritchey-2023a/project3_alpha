@@ -40,8 +40,6 @@ function App() {
           <Route path="/sales-report" element={<SalesReport />} />
           <Route path="/restock-report" element={<RestockReport />} />
           <Route path="/excess-report" element={<ExcessReport />} />
-          <Route path="/z-report" element={<XZReport />}/>
-          <Route path="/x-report" element={<Xreport/>}/>
 
           {<Route path="*" element={<NotFound/>}/>/* Any route that is not previously made will go to this error page */}
 
