@@ -1,0 +1,39 @@
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+  
+.manager-link-style {
+    margin: 0px 20px;
+    padding: 10px;
+    position: relative;
+    color: rgb(170, 12, 243);
+    text-decoration-color: rgb(170, 12, 243);
+}
+
+.manager-link-style:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.manager-link-style h3 {
+    z-index: 1;
+    
+}
+
+
+.pg-color{
+    background-color: #bebdbd;
+}
+
+.manager-screen{
+    overflow: hidden;
+}

@@ -1,0 +1,101 @@
+.Spin-n-stone-logo {
+    transform: scale(0.5);
+}
+
+.server-pg-color{
+    background-color: #b4b2b2;
+}
+
+.server-overflow{
+  overflow: hidden;
+}
+
+.container{
+  margin-top: 10px;
+}
+
+#server_buttons{
+  border: none;
+  height: 40px;
+  overflow: hidden;
+}
+
+#server_buttons::-moz-focus-inner {
+  border: 0;
+}
+
+#server_buttons:focus {
+  outline: none;
+}
+
+#server_buttons option{
+  border:rgb(204, 122, 0) solid 1px;
+  border-radius: 5px;
+  color: rgb(204, 122, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2em;
+  margin-right: 20px;
+  padding: 10px 2;
+  text-align: center;
+  width: 200px;
+}
+.Toppings{
+  margin-top: -200px;
+  text-align: center;
+}
+#topping_buttons{
+  border: none; 
+  text-align: center;
+  height: 610px;
+  display: flex;
+  margin: 0 auto;
+  flex-flow: row wrap;
+}
+
+#topping_buttons::-moz-focus-inner {
+  border: 0;
+}
+
+#topping_buttons:focus {
+  outline: none;
+}
+
+#topping_buttons option{
+  border:rgb(204, 122, 0) solid 1px;
+  border-radius: 5px;
+  color: rgb(204, 122, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2em;
+  height: auto;
+  margin-right: 20px;
+  padding: 10px 2;
+  text-align: center;
+  width: 200px;
+}
+/*.Toppings{
+  flex-flow: column wrap;
+  overflow: hidden;
+}
+
+#topping_buttons{
+  border: none;
+  height: 40px;
+  overflow: hidden;
+}
+
+#topping_buttons option{
+  border:rgb(204, 122, 0) solid 1px;
+  border-radius: 5px;
+  color: rgb(204, 122, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2em;
+  margin-right: 20px;
+  padding: 10px 2;
+  text-align: center;
+  width: 200px;
+}
+*/
+

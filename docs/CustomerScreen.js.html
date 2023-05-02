@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: CustomerScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: CustomerScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {useEffect, useState} from 'react'
+import './CustomerScreen.css'
+import {Link} from 'react-router-dom'
+import GoogleTranslate from './components/GoogleTranslate'
+
+/**
+ * Displays the Customer ordering screen for Spin N' Stonasite.
+ * @namespace CustomerScreen
+ * @component
+ */
+const CustomerScreen = () => {
+  const [toppings, set_toppings] = useState([]);
+  const [cheeses, set_cheeses] = useState([]);
+  const [sauces, set_sauces] = useState([]);
+  const [drizzles, set_drizzles] = useState([]);
+  const [price, set_price] = useState(0);
+
+  const [order, set_order] = useState({
+    "pizza-type": "",
+    "topping1": "",
+    "topping2": "",
+    "topping3": "",
+    "topping4": "",
+    "sauce": "",
+    "cheese": "",
+    "drizzle": "",
+    "payment-method":""
+  })
+
+  /**
+   * A function that handles receiving the list of toppings from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise&lt;void>} Resolved with no value when the list of toppings has been set in the state
+   * 
+   */
+  const get_toppings = async () => {
+      try{
+
+          const response = await fetch("http://localhost:5000/toppings");
+          const json_data = await response.json();
+
+          //console.log(json_data)
+          set_toppings(json_data);
+      }
+      catch(err){
+          console.error(err.message)
+      }
+  };
+
+  /**
+   * A function that handles receiving the list of cheeses from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise&lt;void>} Resolved with no value when the list of cheeses has been set in the state
+   * 
+   */
+  const get_cheeses = async () => {
+      try{
+
+          const response = await fetch("http://localhost:5000/cheeses");
+          const json_data = await response.json();
+
+          //console.log(json_data)
+          set_cheeses(json_data);
+      }
+      catch(err){
+          console.error(err.message)
+      }
+  }
+
+  /**
+   * A function that handles receiving the list of sauces from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise&lt;void>} Resolved with no value when the list of sauces has been set in the state
+   * 
+   */
+  const get_sauces = async () => {
+      try{
+
+          const response = await fetch("http://localhost:5000/sauces");
+          const json_data = await response.json();
+
+          //console.log(json_data)
+          set_sauces(json_data);
+      }
+      catch(err){
+          console.error(err.message)
+      }
+  }
+
+  /**
+   * A function that handles receiving the list of drizzles from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise&lt;void>} Resolved with no value when the list of drizzles has been set in the state
+   * 
+   */
+  const get_drizzles = async () => {
+      try{
+
+          const response = await fetch("http://localhost:5000/drizzles");
+          const json_data = await response.json();
+
+          //console.log(json_data)
+          set_drizzles(json_data);
+      }
+      catch(err){
+          console.error(err.message)
+      }
+  }
+
+  useEffect(() => {
+    get_toppings();
+    get_cheeses();
+    get_sauces();
+    get_drizzles();
+    if (order['pizza-type'] === 'cheese'){
+      set_price(6.45);
+    }
+    else if (order['pizza-type'] === '1-topping'){
+      set_price(7.49);
+    }
+    else if (order['pizza-type'] === '4-topping'){
+      set_price(8.85);
+    }
+  },[order['pizza-type']]);
+
+  useEffect(() => {
+    set_order({...order, "topping1":"", "topping2":"", "topping3":"", "topping4":""})
+
+  }, [order['pizza-type']])
+
+  /**
+   * Sets the order details for an order.
+   * @param {string} name The name of the order detail to be set.
+   * @param {any} value The value to be set for the order detail.
+   * @returns{void}
+   */
+  const setOrderDetails = (name, value) => {
+    set_order({...order, [name]: value})
+    console.log(order)
+  }
+
+  /**
+   * Submits an order to the server.
+   * @memberof CustomerScreen
+   * @async
+   * @function submitOrder
+   * @returns {Promise&lt;void>}
+   * @throws {Error}If there is an error submitting the order.
+   */
+  const submitOrder = async () => {
+    try {
+      await fetch(`http://localhost:5000/transaction?` + new URLSearchParams({
+        "pizza-type": order["pizza-type"],
+        sauce: order.sauce,
+        cheese: order.cheese ,
+        drizzle: order.drizzle,
+        topping1: order.topping1,
+        topping2: order.topping2,
+        topping3: order.topping3,
+        topping4: order.topping4
+      }), {
+        method: "POST"
+      })
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+  return (
+    &lt;div className="customer-background" style={{
+      backgroundImage: "url(/black-brick-wall-texture.jpg)",
+      
+    }}>
+      &lt;Link to="/" className="link-style">               
+            &lt;h3>Return home&lt;/h3>            
+      &lt;/Link>
+      &lt;img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+      &lt;div className="d-flex justify-content-center">
+        
+        
+        &lt;div className="container-fluid mx-auto d-flex justify-content-center text-white">
+          &lt;div className="col-md-6 mt-2 mb-2">
+            &lt;h1>Welcome to Spin N' Stone!&lt;/h1> 
+            &lt;label htmlFor="pizza-type">Choose a pizza type:&lt;/label>
+            &lt;select 
+              name="pizza-type" 
+              id="pizza-type" 
+              value={order["pizza-type"]}
+              onChange={e => setOrderDetails("pizza-type", e.target.value)} >
+              &lt;option value="" disabled>Select your option&lt;/option>
+              &lt;option value="cheese">Cheese - $6.45&lt;/option>
+              &lt;option value="1-topping">1 Topping - $7.49&lt;/option>
+              &lt;option value="4-topping">4 Topping - $8.85&lt;/option>
+            &lt;/select>
+            &lt;br />
+
+            &lt;label htmlFor="sauces">Choose a sauce:&lt;/label>
+            &lt;select name="sauces" id="sauces" value={order.sauce} onChange={e => setOrderDetails("sauce", e.target.value)}>
+              &lt;option value="" disabled>Select your option&lt;/option>
+              {
+                sauces.map(sauce => (
+                  &lt;option value={sauce.sauceid} key={sauce.sauceid}>{sauce.sauceid}&lt;/option>
+                ))
+              }
+            &lt;/select>
+            &lt;br />
+            
+            &lt;label htmlFor="cheeses">Choose a cheese:&lt;/label>
+            &lt;select name="cheeses" id="cheese" value={order.cheese} onChange={e => setOrderDetails("cheese", e.target.value)}>
+              &lt;option value="" disabled>Select your option&lt;/option>
+              {
+                cheeses.map(cheese => (
+                  &lt;option value={cheese.cheeseid} key={cheese.cheeseid}>{cheese.cheeseid}&lt;/option>
+                ))
+              }
+            &lt;/select>
+            &lt;br />
+
+            &lt;label htmlFor="drizzles">Choose a drizzle:&lt;/label>
+            &lt;select name="drizzles" id="drizzles" value={order.drizzle} onChange={e => setOrderDetails("drizzle", e.target.value)}>
+              &lt;option value="" disabled>Select your option&lt;/option>
+              {
+                drizzles.map(drizzle => (
+                  &lt;option value={drizzle.drizzleid} key={drizzle.drizzleid}>{drizzle.drizzleid}&lt;/option>
+                ))
+              }
+            &lt;/select>
+            &lt;br />
+
+            {
+              (order['pizza-type'] === "1-topping" || order['pizza-type'] === "4-topping") ? (
+                &lt;>
+                  &lt;label htmlFor="toppings">Choose a topping:&lt;/label>
+                  &lt;select name="toppings" id="toppings" value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
+                  &lt;option value="" disabled>Select your option&lt;/option>
+                    {
+                      toppings.map(topping => (
+                        &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
+                      ))
+                    }
+                  &lt;/select>
+                  &lt;br />
+                &lt;/>
+              ) : ''
+            }
+            {
+              (order['pizza-type'] === "4-topping") ? (
+                &lt;>
+                  &lt;label htmlFor="toppings">Choose a topping:&lt;/label>
+                  &lt;select name="toppings" id="toppings" value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
+                  &lt;option value="" disabled>Select your option&lt;/option>
+                    {
+                      toppings.map(topping => (
+                        &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
+                      ))
+                    }
+                  &lt;/select>
+                  &lt;br />
+                &lt;/>
+              ) : ''
+            }
+            {
+              (order['pizza-type'] === "4-topping") ? (
+                &lt;>
+                  &lt;label htmlFor="toppings">Choose a topping:&lt;/label>
+                  &lt;select name="toppings" id="toppings" value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
+                  &lt;option value="" disabled>Select your option&lt;/option>
+                    {
+                      toppings.map(topping => (
+                        &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
+                      ))
+                    }
+                  &lt;/select>
+                  &lt;br />
+                &lt;/>
+              ) : ''
+            }
+            {
+              (order['pizza-type'] === "4-topping") ? (
+                &lt;>
+                  &lt;label htmlFor="toppings">Choose a topping:&lt;/label>
+                  &lt;select name="toppings" id="toppings" value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
+                  &lt;option value="" disabled>Select your option&lt;/option>
+                    {
+                      toppings.map(topping => (
+                        &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
+                      ))
+                    }
+                  &lt;/select>
+                  &lt;br />
+                &lt;/>
+              ) : ''
+            }
+
+            &lt;h4>Your order details&lt;/h4>
+            &lt;ul>
+              {Object.values(order).filter(Boolean).map((e,i) => &lt;li key={i}>{e}&lt;/li>)}
+            &lt;/ul>
+            &lt;ul>
+              &lt;div>Price: ${price}&lt;/div>
+            &lt;/ul>
+            &lt;label htmlFor="payment-method">Confirm Payment Method:&lt;/label>
+            &lt;select name="payment-method" id="payment-method" value={order["payment-method"]}
+              onChange={e => setOrderDetails("payment-method", e.target.value)} >
+              &lt;option value="" disabled>Select customer option&lt;/option>
+              &lt;option value="Dining Dollars">Dining Dollars&lt;/option>
+              &lt;option value="Retail Swipe">Retail Swipe&lt;/option>
+              &lt;option value="Credit Card">Credit Card&lt;/option>
+            &lt;/select>
+            &lt;br /> &lt;br />
+            &lt;button onClick={submitOrder}>Submit your order&lt;/button>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;img src="pizza.jpg" className="customer-pizza" alt="pizza image"/>
+      &lt;/div>
+    &lt;/div>
+  )
+}
+
+export default CustomerScreen</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="CustomerScreen.html">CustomerScreen</a></li><li><a href="HomeScreen.html">HomeScreen</a></li><li><a href="ManagerScreen.html">ManagerScreen</a></li><li><a href="ServerScreen.html">ServerScreen</a></li></ul><h3>Global</h3><ul><li><a href="global.html#NotFound">NotFound</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 20:39:50 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

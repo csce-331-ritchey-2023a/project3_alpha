@@ -1,10 +1,24 @@
 import React, { Fragment, useState } from "react";
 
+
+/**
+ * Displays the Sales Report.
+ * @component
+ * @namespace SalesReport
+ */
 const SalesReport = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [salesData, setSalesData] = useState([]);
 
+  /**
+   * Handles form submission to retrieve sales data within the given date range.
+   * @async
+   * @function handleSubmit
+   * @memberof SalesReport
+   * @returns {Promise<void>} Resolves after retrieving and setting sales data.
+   * 
+   */
   const handleSubmit = async () => {
     const formattedStartDate = startDate + " 00:00:00";
     const formattedEndDate = endDate + " 23:59:59";
@@ -13,6 +27,11 @@ const SalesReport = () => {
     setSalesData(data);
   };
 
+  /**
+   * Counts the number of pizzas sold by type and their total price.
+   * @memberof SalesReport
+   * @returns {Object} An object containing the count and total price of each pizza type.
+   */
   const countPizzas = () => {
     let cheeseCount = 0;
     let cheesePrice = 0.0;
@@ -33,25 +52,33 @@ const SalesReport = () => {
         fourToppingPrice+= 8.85;
       }
     });
-
-    return { cheese: cheeseCount, cheese_price: cheesePrice, oneTopping: oneToppingCount, oneTopping_price: oneToppingPrice, fourTopping: fourToppingCount, fourTopping_price: fourToppingPrice};
+    
+    return { cheese: cheeseCount, cheese_price: cheesePrice, oneTopping: oneToppingCount, oneTopping_price: oneToppingPrice, fourTopping: fourToppingCount, fourTopping_price: fourToppingPrice,};
+    
   };
 
-  const pizzaCount = countPizzas();
+  const pizzaCount = countPizzas();  
 
   return (
     <Fragment>
-      <label>
-        Start Date:
-        <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+      <h3 className="text-center">Sales Report</h3>
+      <div className="text-center">
+        <label>
+          Start Date:
+          <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+        </label>
+        <label>
+          End Date:
+          <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
       </label>
-      <label>
-        End Date:
-        <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-      </label>
-      <button className="btn btn-primary" onClick={handleSubmit}>
-        Generate Report
-      </button>
+      </div>
+      
+      <div className="text-center mt-2">
+        <button className="btn btn-primary" onClick={handleSubmit}>
+          Generate Sales Report
+        </button>
+
+      </div>
 
       <table className="table">
         <thead>

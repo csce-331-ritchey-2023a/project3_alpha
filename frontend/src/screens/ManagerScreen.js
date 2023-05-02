@@ -1,4 +1,5 @@
-import React, {Fragment} from 'react'
+import React, {Fragment,useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import './ManagerScreen.css'
 
 
@@ -10,19 +11,49 @@ import RestockReport from "./components/RestockReport";
 import { XZReport } from './components/XZReport';
 import ExcessReport from './components/ExcessReport';
 import { Xreport } from './components/Xreport';
+import GoogleTranslate from './components/GoogleTranslate';
+import { AddUpdateProducts } from './components/UpdateManager';
 
-
+/**
+ * A React component that displays the Manager screen with various reports and options
+ * @namespace ManagerScreen
+ * @component 
+ */
 const ManagerScreen = () => {
-  return (   
+  return (  
     <Fragment>
-      <div className = "container">
-        <ListTables />
-        <SalesReport />
-        <RestockReport />
-        <ExcessReport /> 
+      <div className="pg-color manager-screen">
+        <Link to="/" className="logout-style">               
+          <h3>Logout</h3>            
+        </Link>
+        <img src="spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+        <div className="link-container">
+          <Link to="/sales-report" className="manager-link-style">
+            <h3>Sales Report</h3>
+          </Link>
 
-        <XZReport />
-        <Xreport />
+          <Link to="/restock-report" className="manager-link-style">
+            <h3>Restock Report</h3>
+          </Link>
+
+          <Link to="/excess-report" className="manager-link-style">
+            <h3>Excess Report</h3>
+          </Link>
+
+          <Link to="/z-report" className="manager-link-style">
+            <h3>Z Report</h3>
+          </Link>
+
+          <Link to="/x-report" className="manager-link-style">
+            <h3>X Report</h3>
+          </Link>
+
+        </div>
+        <div className="container">
+          <GoogleTranslate />
+          <AddUpdateProducts />
+          <ListTables />
+        </div>
 
       </div>
     </Fragment>

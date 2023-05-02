@@ -1,11 +1,24 @@
 import React, { Fragment, useState } from "react";
 
+
+/**
+ * Displays the Restock Report.
+ * @namespace RestockReport
+ * @component 
+ */
 const RestockReport = () => {
   const [toppingData, setToppingData] = useState([]);
   const [cheeseData, setCheeseData] = useState([]);
   const [drizzleData, setDrizzleData] = useState([]);
   const [sauceData, setSauceData] = useState([]);
 
+  /**
+   * Fetches data for all tables from the server and sets states for each data type.
+   * @function
+   * @memberof RestockReport
+   * @async
+   * @returns {void}
+   */
   const handleSubmit = async () => {
     const topping_response = await fetch(`https://project3-alpha.onrender.com/toppings`);
     const cheese_response = await fetch(`https://project3-alpha.onrender.com/cheeses`);
@@ -21,6 +34,10 @@ const RestockReport = () => {
     setSauceData(sauce_data);
   };
 
+  /**
+   * Counts the inventory of all tables within the database.
+   * @returns {Object} An object with keys for each type of inventory and their respective IDs, amounts, and recommended restocking amount.
+   */
   const countInventory = () => {
     let toppingRecommendation = 90;
     let cheeseRecommendation = 125;
@@ -64,9 +81,12 @@ const RestockReport = () => {
 
   return (
     <Fragment>
-      <button className="btn btn-primary" onClick={handleSubmit}>
-        Generate Restock Report
-      </button>
+      <div className="text-center">
+        <h3 className="text-center">Restock Report</h3>
+        <button className="btn btn-primary" onClick={handleSubmit}>
+          Generate Restock Report
+        </button>
+      </div>
 
       <table className="table">
         <thead>

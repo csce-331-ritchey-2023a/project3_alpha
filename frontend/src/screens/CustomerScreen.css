@@ -1,0 +1,23 @@
+.customer-background{
+    background-size: cover;
+    background-position: center;
+    height: 110vh;
+}
+
+.Spin-n-stone-logo {
+    display: block;
+    margin: 0 auto;
+    position: flex;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.customer-pizza{
+    width: 15%;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-5%);
+    transform: translateX(70%);
+}
