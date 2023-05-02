@@ -2,9 +2,20 @@ import React, {Fragment, useEffect, useState} from "react";
 import './XZReport.css'
 import Axios from 'axios';
 
+/**
+ * Displays the Z report.
+ * @namespace Zreport
+ * @component
+ */
 export const XZReport = () => {
     const [zreport, setZreport] = useState([]);
-
+    /**
+     * Retreives the Z report from the server and sets the Z report state.
+     * @function
+     * @memberof Zreport
+     * @name getXZreport
+     * @returns {void}
+     */
     const getXZreport = () => {
         Axios.get('http://localhost:5000/a/b/c/d/zreport')
             .then((response) => {
@@ -16,7 +27,12 @@ export const XZReport = () => {
                 console.log('error')
             })
     }
-
+    /**
+     * Generates a new Z report.
+     * @async
+     * @function generateZreport
+     * @returns {Promise<void>} A promise that resolves when the Z report is generated
+     */
     const generateZreport = async () =>{
         Axios.get('http://localhost:5000/a/b/c/d/zreport/insert')
             .then((response) => {

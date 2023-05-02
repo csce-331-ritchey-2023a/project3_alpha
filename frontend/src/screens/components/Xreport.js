@@ -2,9 +2,20 @@ import React, {Fragment, useEffect, useState} from "react";
 import './XZReport.css'
 import Axios from 'axios';
 
+/**
+ * Displays the X Report.
+ * @namespace Xreport
+ * @components
+ */
 export const Xreport = () => {
   const [xreport, setXreport] = useState("please run an Xreport")
 
+  /**
+   * Retrieves X report from server and sets its state.
+   * @function
+   * @memberof Xreport
+   * @returns {void}
+   */
   const getXreport = () => {
     Axios.get('http://localhost:5000/a/b/c/d/xreport/insert')
       .then((response) => {

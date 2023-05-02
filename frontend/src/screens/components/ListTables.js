@@ -1,6 +1,12 @@
 import React, {Fragment, useEffect, useState} from "react";
 import "./ListTables.css";
 
+/**
+ * Lists all tables of ingredients within the database.
+ * @namespace ListTables
+ * @component
+ */
+
 const ListTables = () => {
 
     const [toppings, set_toppings] = useState([]);
@@ -8,6 +14,14 @@ const ListTables = () => {
     const [sauces, set_sauces] = useState([]);
     const [drizzles, set_drizzles] = useState([]);
 
+    /**
+     * A function that handles receiving the list of toppings from the database.
+     * @memberof ListTables
+     * @async
+     * @function
+     * @returns {Promise<void>} Resolved with no value when the list of toppings has been set in the state
+     * 
+     */
     const get_toppings = async () => {
         try{
 
@@ -22,6 +36,14 @@ const ListTables = () => {
         }
     };
 
+    /**
+     * A function that handles receiving the list of cheeses from the database.
+     * @memberof ListTables
+     * @async
+     * @function
+     * @returns {Promise<void>} Resolved with no value when the list of cheeses has been set in the state
+     * 
+     */
     const get_cheeses = async () => {
         try{
 
@@ -35,7 +57,14 @@ const ListTables = () => {
             console.error(err.message)
         }
     }
-
+    /**
+     * A function that handles receiving the list of sauces from the database.
+     * @memberof ListTables
+     * @async
+     * @function
+     * @returns {Promise<void>} Resolved with no value when the list of sauces has been set in the state
+     * 
+     */
     const get_sauces = async () => {
         try{
 
@@ -49,7 +78,14 @@ const ListTables = () => {
             console.error(err.message)
         }
     }
-
+    /**
+     * A function that handles receiving the list of drizzles from the database.
+     * @memberof ListTables
+     * @async
+     * @function
+     * @returns {Promise<void>} Resolved with no value when the list of drizzles has been set in the state
+     * 
+     */
     const get_drizzles = async () => {
         try{
 
