@@ -175,13 +175,12 @@ const ServerScreen = () => {
                 ))
               }
             </select>
-            <br />
-
+              </div><div className="Toppings">
             {
               (order['pizza-type'] === "1-topping" || order['pizza-type'] === "4-topping") ? (
                 <>
                   <label htmlFor="toppings">Topping:</label> <br />
-                  <select name="toppings" id="server_buttons" multiple value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
+                  <select name="toppings" id="topping_buttons" multiple value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -196,7 +195,7 @@ const ServerScreen = () => {
               (order['pizza-type'] === "4-topping") ? (
                 <>
                   <label htmlFor="toppings">Topping:</label> <br />
-                  <select name="toppings" id="server_buttons" multiple value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
+                  <select name="toppings" id="topping_buttons" multiple value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -211,7 +210,7 @@ const ServerScreen = () => {
               (order['pizza-type'] === "4-topping") ? (
                 <>
                   <label htmlFor="toppings">Topping:</label> <br />
-                  <select name="toppings" id="server_buttons" multiple value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
+                  <select name="toppings" id="topping_buttons" multiple value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -226,7 +225,7 @@ const ServerScreen = () => {
               (order['pizza-type'] === "4-topping") ? (
                 <>
                   <label htmlFor="toppings">Topping:</label> <br />
-                  <select name="toppings" id="server_buttons" multiple value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
+                  <select name="toppings" id="topping_buttons" multiple value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
                     {
                       toppings.map(topping => (
                         <option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}</option>
@@ -237,6 +236,8 @@ const ServerScreen = () => {
                 </>
               ) : ''
             }
+            </div>
+            <div className="server-overflow container">
             <h4>Customer order details</h4>
             <ul>
               {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
