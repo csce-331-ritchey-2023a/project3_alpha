@@ -1,5 +1,6 @@
 .Spin-n-stone-logo {
     transform: scale(0.5);
+    
 }
 
 #header-container {
@@ -63,18 +64,20 @@
 }
 
 
-.Spin-n-stone-logo {
+.Spin-n-stone-logo-homescreen {
+    transform: scale(0.8);
     display: block;
     margin: 50px auto 0;
 }
 
 .rotate-pizza {
     display: block;
-    margin: 60px auto;
-    width: 125%;
+    margin: 80px auto;
+    width: 50%;
     animation: rotation 15s infinite linear;
     transform-origin: center;
-    width: 200px;
+    margin-top: -10px;
+    margin-right: 125px;
 }
 
 @keyframes rotation {
@@ -88,7 +91,7 @@
 
 .homepage-address{
     color: white;
-    margin-top: -20px;
+    
     margin-bottom: 30px;
     padding-left: 27px;
     font-size: 1.3em;
