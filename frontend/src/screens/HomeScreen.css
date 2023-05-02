@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #c2c0c0;
+    background-color: #3f3f3f;
     padding: 10px;
 }
 
@@ -26,8 +26,8 @@
     padding: 10px;
     position: relative;
 
-    color: red;
-    text-decoration-color: red;
+    color: rgb(214 154 39);
+    text-decoration-color: rgb(214 154 39);
 }
 
 .link-style:hover::before {
@@ -72,7 +72,7 @@
     width: 125%;
     animation: rotation 15s infinite linear;
     transform-origin: center;
-
+    width: 200px;
 }
 
 @keyframes rotation {
@@ -82,5 +82,13 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.homepage-address{
+    color: white;
+    margin-top: -20px;
+    margin-bottom: 30px;
+    padding-left: 27px;
+    font-size: 1.3em;
 }
   
