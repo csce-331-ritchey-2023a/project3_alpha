@@ -145,7 +145,6 @@ const CustomerScreen = () => {
    */
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
-    console.log(order)
   }
 
   /**
@@ -318,7 +317,7 @@ const CustomerScreen = () => {
               <option value="Credit Card">Credit Card</option>
             </select>
             <br /> <br />
-            <button onClick={submitOrder}>Submit your order</button>
+            <button class="btn btn-primary mt-2" onClick={submitOrder}>Submit your order</button>
           </div>
         </div>
 

@@ -28,15 +28,15 @@ export const XZReport = () => {
     }
 
     const handleSubmit = () => {
-        if (zreport.length == 0){
-            generateZreport();
-        } else if(formatDate(zreport[zreport.length-1].reportdate) == formatDate(Date.now())) {
-            alert("Can not generate a Z report from same day");
-        } else {
+        // if (zreport.length == 0){
+        //     generateZreport();
+        // } else if(formatDate(zreport[zreport.length-1].reportdate) == formatDate(Date.now())) {
+        //     alert("Can not generate a Z report from same day");
+        // } else {
             generateZreport();
         }
         
-    }
+    // }
 
 
     function formatDate(dateString) {

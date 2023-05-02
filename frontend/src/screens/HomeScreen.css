@@ -26,8 +26,8 @@
     padding: 10px;
     position: relative;
 
-    color: rgb(255, 72, 0);
-    text-decoration-color: rgb(255, 72, 0);
+    color: rgb(214 154 39);
+    text-decoration-color: rgb(214 154 39);
 }
 
 .link-style:hover::before {
@@ -72,7 +72,7 @@
     width: 125%;
     animation: rotation 15s infinite linear;
     transform-origin: center;
-
+    width: 200px;
 }
 
 @keyframes rotation {

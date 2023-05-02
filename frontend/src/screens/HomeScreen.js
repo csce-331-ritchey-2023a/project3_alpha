@@ -39,8 +39,6 @@ const HomeScreen = () => {
   function handleCallbackResponse(response) {
     //console.log("Encoded JWT token:"+ response.credential)
     var user = jwt_decode(response.credential)
-    console.log(user)
-    console.log(user.hd)
     if (user.hd == "tamu.edu"){
       setManager(true);
       setEmployee(false);
