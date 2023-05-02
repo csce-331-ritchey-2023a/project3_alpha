@@ -1,11 +1,22 @@
 import React, { Fragment, useEffect, useState } from 'react'
 
+
+/**
+ * Displays the Excess Report.
+ * @namespace ExcessReport
+ * @component
+ */
 const ExcessReport = () => {
 
     const [startDate, setStartDate] = useState("04-18-2023 08:00:00");
     const [edibles, setEdibles] = useState({})
     const [transactions, setTransactions] = useState([])
-
+    /**
+     * Submits a request to the server for transactions within a specific time range.
+     * @async
+     * @function
+     * @returns {Promise<void>} A promise that resolves once the transaction state has been updated.
+     */
     let handleSubmit = async () => {
         const formattedStartDate = startDate;
         const d = new Date()

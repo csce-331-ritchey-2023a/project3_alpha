@@ -169,7 +169,6 @@ const ServerScreen = () => {
    */
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
-    console.log(order)
   }
   /**
    * Submits an order to the server.
@@ -251,13 +250,12 @@ const ServerScreen = () => {
                 ))
               }
             &lt;/select>
-            &lt;br />
-
+              &lt;/div>&lt;div className="Toppings">
             {
               (order['pizza-type'] === "1-topping" || order['pizza-type'] === "4-topping") ? (
                 &lt;>
                   &lt;label htmlFor="toppings">Topping:&lt;/label> &lt;br />
-                  &lt;select name="toppings" id="server_buttons" multiple value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
+                  &lt;select name="toppings" id="topping_buttons" multiple value={order.topping1} onChange={e => setOrderDetails("topping1", e.target.value)}>
                     {
                       toppings.map(topping => (
                         &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
@@ -272,7 +270,7 @@ const ServerScreen = () => {
               (order['pizza-type'] === "4-topping") ? (
                 &lt;>
                   &lt;label htmlFor="toppings">Topping:&lt;/label> &lt;br />
-                  &lt;select name="toppings" id="server_buttons" multiple value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
+                  &lt;select name="toppings" id="topping_buttons" multiple value={order.topping2} onChange={e => setOrderDetails("topping2", e.target.value)}>
                     {
                       toppings.map(topping => (
                         &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
@@ -287,7 +285,7 @@ const ServerScreen = () => {
               (order['pizza-type'] === "4-topping") ? (
                 &lt;>
                   &lt;label htmlFor="toppings">Topping:&lt;/label> &lt;br />
-                  &lt;select name="toppings" id="server_buttons" multiple value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
+                  &lt;select name="toppings" id="topping_buttons" multiple value={order.topping3} onChange={e => setOrderDetails("topping3", e.target.value)}>
                     {
                       toppings.map(topping => (
                         &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
@@ -302,7 +300,7 @@ const ServerScreen = () => {
               (order['pizza-type'] === "4-topping") ? (
                 &lt;>
                   &lt;label htmlFor="toppings">Topping:&lt;/label> &lt;br />
-                  &lt;select name="toppings" id="server_buttons" multiple value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
+                  &lt;select name="toppings" id="topping_buttons" multiple value={order.topping4} onChange={e => setOrderDetails("topping4", e.target.value)}>
                     {
                       toppings.map(topping => (
                         &lt;option value={topping.topping_id} key={topping.topping_id}>{topping.topping_id}&lt;/option>
@@ -313,6 +311,8 @@ const ServerScreen = () => {
                 &lt;/>
               ) : ''
             }
+            &lt;/div>
+            &lt;div className="server-overflow container">
             &lt;h4>Customer order details&lt;/h4>
             &lt;ul>
               {Object.values(order).filter(Boolean).map((e,i) => &lt;li key={i}>{e}&lt;/li>)}
@@ -344,13 +344,13 @@ export default ServerScreen</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-routers_users.html">routers/users</a></li></ul><h3>Namespaces</h3><ul><li><a href="CustomerScreen.html">CustomerScreen</a></li><li><a href="HomeScreen.html">HomeScreen</a></li><li><a href="ManagerScreen.html">ManagerScreen</a></li><li><a href="ServerScreen.html">ServerScreen</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#NotFound">NotFound</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-routers_users.html">routers/users</a></li></ul><h3>Namespaces</h3><ul><li><a href="AddUpdateProducts.html">AddUpdateProducts</a></li><li><a href="CustomerScreen.html">CustomerScreen</a></li><li><a href="ExcessReport.html">ExcessReport</a></li><li><a href="GoogleTranslate.html">GoogleTranslate</a></li><li><a href="HomeScreen.html">HomeScreen</a></li><li><a href="ListTables.html">ListTables</a></li><li><a href="ManagerScreen.html">ManagerScreen</a></li><li><a href="RestockReport.html">RestockReport</a></li><li><a href="SalesReport.html">SalesReport</a></li><li><a href="ServerScreen.html">ServerScreen</a></li><li><a href="Weather.html">Weather</a></li><li><a href="Xreport.html">Xreport</a></li><li><a href="Zreport.html">Zreport</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#generateZreport">generateZreport</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 21:12:44 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 21:56:06 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
