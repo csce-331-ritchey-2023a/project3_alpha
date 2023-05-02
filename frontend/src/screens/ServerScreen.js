@@ -284,7 +284,7 @@ const ServerScreen = () => {
               ) : ''
             }
             </div>
-            <div className="server-overflow container">
+            <div className="server-overflow container mt-5">
             <h4>Customer order details</h4>
             <ul>
               {Object.values(order).filter(Boolean).map((e,i) => <li key={i}>{e}</li>)}
