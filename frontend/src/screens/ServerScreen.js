@@ -3,6 +3,11 @@ import './ServerScreen.css'
 import {Link} from 'react-router-dom'
 import GoogleTranslate from './components/GoogleTranslate'
 
+/**
+ * Displays the server screen. This screen is used by employees to submit orders.
+ * @namespace ServerScreen
+ * @component
+ */
 const ServerScreen = () => {
   const [toppings, set_toppings] = useState([]);
   const [cheeses, set_cheeses] = useState([]);
@@ -21,7 +26,14 @@ const ServerScreen = () => {
     "drizzle": "",
     "payment-method":""
   })
-
+  /**
+   * A function that handles receiving the list of toppings from the database.
+   * @memberof ServerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of toppings has been set in the state
+   * 
+   */
   const get_toppings = async () => {
       try{
 
@@ -36,6 +48,14 @@ const ServerScreen = () => {
       }
   };
 
+  /**
+   * A function that handles receiving the list of cheeses from the database.
+   * @memberof ServerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of cheeses has been set in the state
+   * 
+   */
   const get_cheeses = async () => {
       try{
 
@@ -49,7 +69,14 @@ const ServerScreen = () => {
           console.error(err.message)
       }
   }
-
+  /**
+   * A function that handles receiving the list of sauces from the database.
+   * @memberof ServerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of sauces has been set in the state
+   * 
+   */
   const get_sauces = async () => {
       try{
 
@@ -63,7 +90,14 @@ const ServerScreen = () => {
           console.error(err.message)
       }
   }
-
+/**
+   * A function that handles receiving the list of drizzles from the database.
+   * @memberof ServerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of drizzles has been set in the state
+   * 
+   */
   const get_drizzles = async () => {
       try{
           const response = await fetch("http://localhost:5000/drizzles");
@@ -98,11 +132,25 @@ const ServerScreen = () => {
 
   }, [order['pizza-type']])
 
+
+  /**
+   * Sets the order details for an order.
+   * @param {string} name The name of the order detail to be set.
+   * @param {any} value The value to be set for the order detail.
+   * @returns{void}
+   */
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
     console.log(order)
   }
-
+  /**
+   * Submits an order to the server.
+   * @memberof ServerScreen
+   * @async
+   * @function submitOrder
+   * @returns {Promise<void>}
+   * @throws {Error}If there is an error submitting the order.
+   */
   const submitOrder = async () => {
     try {
       await fetch(`http://localhost:5000/transaction?` + new URLSearchParams({

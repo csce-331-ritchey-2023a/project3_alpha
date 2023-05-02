@@ -5,6 +5,16 @@ const connectDB = require("./connect");
 const cors = require("cors");
 const path = require('path')
 
+/**
+ * Express router providing user related routes
+ * @module routers/users
+ * @requires express
+ */
+
+/**
+ * express module
+ * @const
+ */
 const app = express(); // start express app
 
 const PORT = process.env.PORT || 5000;
@@ -24,7 +34,18 @@ app.use(cors());
 app.use(express.json());
 
 const foodTables = ["toppings", "cheeses", "drizzles", "sauces", "toppings","zreport"]
-
+/**
+ * Retrieves all rows from the specific table and sends the result as a JSON response.
+ * @name get/:table/
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.table - Name of the Table to retrieve data from.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the table's data.
+ */
 app.get("/:table/", async (req, res) => { // sample query to get all toppings
   table = req.params.table
   try {
@@ -41,6 +62,18 @@ app.get("/:table/", async (req, res) => { // sample query to get all toppings
   }
 });
 
+/**
+ * Retrieves all rows from the specific table and sends the result as a JSON response.
+ * @name get/:table/
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {string} req.params.table - Name of the Table to retrieve data from.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the table's data.
+ */
 app.get("/transactions/:startDate/:endDate", async (req, res) => {
   const startDate = req.params.startDate.replaceAll("-", "/");
   const endDate = req.params.endDate.replaceAll("-", "/");
@@ -56,6 +89,17 @@ app.get("/transactions/:startDate/:endDate", async (req, res) => {
   }
 });
 
+/**
+ * Retrieves all rows from the transactions table and sends the result as a JSON response.
+ * @name pose/transaction/
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the transaction table's data.
+ */
 app.post("/transaction", async (req, res) => { //Submits a customer's order into the database, decrementing each item chosen from the inventory by one
   let price = req.query.pizzatype == "cheese" ? 6.45 :
               req.query.pizzatype == "1-topping" ? 7.49 : 8.85
@@ -84,7 +128,17 @@ app.post("/transaction", async (req, res) => { //Submits a customer's order into
     console.error(err.message)
   }
 })
- //APP PUT
+
+/**
+ * Inserts an entry into the cheeses table as a new cheese.
+ * @name put/cheeses/
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ */
 app.put("/cheeses", async (req, res) => {
   try {
     console.log(req.query)
@@ -101,6 +155,17 @@ app.put("/cheeses", async (req, res) => {
 
 //TODO: app.put can be decremented in inventory
 
+/**
+ * Retrieves all rows from the Zreport table and sends the result as a JSON response.
+ * @name get/zreport/
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the Zreport table's data.
+ */
 app.get('/a/b/c/d/zreport', async (req,res) => {
   try{
     const stmt = `SELECT * FROM zreport`;
@@ -115,7 +180,17 @@ app.get('/a/b/c/d/zreport', async (req,res) => {
 })
 
 
-
+/**
+ * Inserts a Zreport into the Zreport table.
+ * @name get/zreport/insert
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the new Zreport added to the table.
+ */
 app.get('/a/b/c/d/zreport/insert', async (req,res) => {
   try{
     const checkQuery = `SELECT COUNT(*) FROM zreport`;
@@ -159,6 +234,17 @@ app.get('/a/b/c/d/zreport/insert', async (req,res) => {
   }
 });
 
+/**
+ * Retrieves the Xreport in the Xreport table.
+ * @name get/xreport/insert
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the Xreport replacing the last Xreport in the table.
+ */
 app.get('/a/b/c/d/xreport/insert', async (req,res) => {
 
   try {
@@ -212,6 +298,17 @@ app.get('/a/b/c/d/xreport/insert', async (req,res) => {
 
 });
 
+/**
+ * Updates the price/amount of an ingredient in the database.
+ * @name get/update/:type/:name/:price/:amount
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the new table's data.
+ */
 app.get('/update/:type/:name/:price/:amount', async (req, res) => {
   const type = req.params.type
   const name = req.params.name
@@ -243,6 +340,17 @@ app.get('/update/:type/:name/:price/:amount', async (req, res) => {
   }
 })
 
+/**
+ * Inserts an ingredient with a price/amount in the database.
+ * @name get/update/:type/:name/:price/:amount
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the new table's data.
+ */
 app.get('/insert/:type/:name/:price/:amount', async (req, res) => {
   const type = req.params.type
   const name = req.params.name

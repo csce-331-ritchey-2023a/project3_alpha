@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HomeScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HomeScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import './HomeScreen.css'
+import {Link} from 'react-router-dom'
+import React from 'react'
+import { useState, useEffect } from 'react';
+import GoogleTranslate from './components/GoogleTranslate';
+import jwt_decode from "jwt-decode";
+import {Container, Row, Col} from "react-bootstrap";
+import Weather from './components/Weather';
+
+/**
+ * Variable that indicates if the logged in user is a manager
+ * @memberof HomeScreen
+ * @type {boolean}
+ */
+export const manager = false;
+
+/**
+ * Variable that indicates if the logged in user is an employee
+ * @memberof HomeScreen
+ * @type {boolean}
+ */
+export const employee = false;
+
+
+/**
+ * Displays the home screen of the Spin N' Stonasite website
+ * @component
+ * @namespace HomeScreen
+ */
+const HomeScreen = () => {
+  const [manager, setManager] = useState(false);
+  const [employee, setEmployee] = useState(false);
+
+  /**
+   * A callback function that handles the response from the Google Sign-In API.
+   * @memberof HomeScreen
+   * @param {Object} response - The response object returned by the API.
+   */
+  function handleCallbackResponse(response) {
+    //console.log("Encoded JWT token:"+ response.credential)
+    var user = jwt_decode(response.credential)
+    console.log(user)
+    console.log(user.hd)
+    if (user.hd == "tamu.edu"){
+      setManager(true);
+      setEmployee(false);
+    } if(user.email == "chasemalbright33@gmail.com" || "jjrummell321@gmail.com" || "buijeremy0@gmail.com" || "njferns020@gmail.com") {
+      setEmployee(true);
+      setManager(true);
+    }
+  }
+
+  useEffect(() => {
+
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "245360752945-o4k6f4ck5ethcv2sbjn74dgbaud6nndt.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    })
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      {theme: "outline", size: "large"}
+    )
+  }, []);
+
+  /**
+   * Renders the home screen of the Spin N' Stonasite.
+   * @memberof HomeScreen
+   * @returns {JSX.Element} A JSX element that represents the home screen.
+   */
+  return (
+    &lt;div className="homescreen">
+
+      &lt;div id="header-container">
+        &lt;div id="sign-in-container">
+          &lt;div id="signInDiv">&lt;/div>
+          
+        &lt;/div>
+        &lt;div id="links-container">
+          &lt;GoogleTranslate />
+          &lt;Link to="/customer" className="link-style">               
+            &lt;h3>Start Your Order&lt;/h3>            
+          &lt;/Link>
+          {employee &amp;&amp; (
+            &lt;Link to="/server" className="link-style">               
+              &lt;h3>Employees&lt;/h3>            
+            &lt;/Link>
+          )}
+          {manager &amp;&amp; (
+            &lt;Link to="/manager" className="link-style">               
+              &lt;h3>Managers&lt;/h3>            
+            &lt;/Link>
+          )}
+        &lt;/div>
+      &lt;/div>
+
+      &lt;img
+        className="bg-img"
+        src="black-brick-wall-texture.jpg"
+        alt="Background"
+      />
+
+      &lt;Container fluid>
+        &lt;Row>
+          &lt;Col md={{ span: 4, offset: 3}}>
+            &lt;img src="white_spinnstone_logo.png" className="Spin-n-stone-logo" alt="logo"/>
+          &lt;/Col>
+        &lt;/Row>
+        &lt;Row>
+          &lt;Col md={{ span: 5, offset: 4}}>
+            &lt;div className="homepage-address">
+              Memorial Student Center, 275 Joe Routt Blvd, College Station, TX 77840
+            &lt;/div>
+          &lt;/Col>
+        &lt;/Row>
+        &lt;Row>
+          &lt;Col md={{ span: 2, offset: 5}}>
+            &lt;img src="pizza.png" className="rotate-pizza" alt="Rotating Pizza" />
+          &lt;/Col>
+        &lt;/Row>
+      &lt;/Container>
+      
+      &lt;Weather />
+
+
+    &lt;/div>
+  )
+}
+
+export default HomeScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="CustomerScreen.html">CustomerScreen</a></li><li><a href="HomeScreen.html">HomeScreen</a></li><li><a href="ManagerScreen.html">ManagerScreen</a></li><li><a href="ServerScreen.html">ServerScreen</a></li></ul><h3>Global</h3><ul><li><a href="global.html#NotFound">NotFound</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 20:39:50 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

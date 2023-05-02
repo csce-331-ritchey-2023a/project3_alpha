@@ -1,0 +1,19 @@
+{
+    "source": {
+      "include": ["frontend/src", "backend"],
+      "includePattern": ".+\\.js(doc|x)?$",
+      "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [
+      "plugins/markdown"
+    ],
+    "opts": {
+      "recurse": true,
+      "destination": "docs"
+    },
+    "templates": {
+      "cleverLinks": true,
+      "monospaceLinks": true
+    }
+  }
+  
