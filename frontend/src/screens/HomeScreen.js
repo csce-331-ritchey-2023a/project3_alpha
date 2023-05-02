@@ -7,10 +7,35 @@ import jwt_decode from "jwt-decode";
 import {Container, Row, Col} from "react-bootstrap";
 import Weather from './components/Weather';
 
+/**
+ * Variable that indicates if the logged in user is a manager
+ * @memberof HomeScreen
+ * @type {boolean}
+ */
+export const manager = false;
+
+/**
+ * Variable that indicates if the logged in user is an employee
+ * @memberof HomeScreen
+ * @type {boolean}
+ */
+export const employee = false;
+
+
+/**
+ * Displays the home screen of the Spin N' Stonasite website
+ * @component
+ * @namespace HomeScreen
+ */
 const HomeScreen = () => {
   const [manager, setManager] = useState(false);
   const [employee, setEmployee] = useState(false);
 
+  /**
+   * A callback function that handles the response from the Google Sign-In API.
+   * @memberof HomeScreen
+   * @param {Object} response - The response object returned by the API.
+   */
   function handleCallbackResponse(response) {
     //console.log("Encoded JWT token:"+ response.credential)
     var user = jwt_decode(response.credential)
@@ -37,7 +62,11 @@ const HomeScreen = () => {
     )
   }, []);
 
-
+  /**
+   * Renders the home screen of the Spin N' Stonasite.
+   * @memberof HomeScreen
+   * @returns {JSX.Element} A JSX element that represents the home screen.
+   */
   return (
     <div className="homescreen">
 

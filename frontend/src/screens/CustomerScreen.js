@@ -3,6 +3,12 @@ import './CustomerScreen.css'
 import {Link} from 'react-router-dom'
 import GoogleTranslate from './components/GoogleTranslate'
 
+
+/**
+ * Displays the Customer ordering screen for Spin N' Stonasite.
+ * @namespace CustomerScreen
+ * @component
+ */
 const CustomerScreen = () => {
   const [toppings, set_toppings] = useState([]);
   const [cheeses, set_cheeses] = useState([]);
@@ -22,6 +28,14 @@ const CustomerScreen = () => {
     "payment-method":""
   })
 
+  /**
+   * A function that handles receiving the list of toppings from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of toppings has been set in the state
+   * 
+   */
   const get_toppings = async () => {
       try{
 
@@ -36,6 +50,14 @@ const CustomerScreen = () => {
       }
   };
 
+  /**
+   * A function that handles receiving the list of cheeses from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of cheeses has been set in the state
+   * 
+   */
   const get_cheeses = async () => {
       try{
 
@@ -50,6 +72,14 @@ const CustomerScreen = () => {
       }
   }
 
+  /**
+   * A function that handles receiving the list of sauces from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of sauces has been set in the state
+   * 
+   */
   const get_sauces = async () => {
       try{
 
@@ -64,6 +94,14 @@ const CustomerScreen = () => {
       }
   }
 
+  /**
+   * A function that handles receiving the list of drizzles from the database.
+   * @memberof CustomerScreen
+   * @async
+   * @function
+   * @returns {Promise<void>} Resolved with no value when the list of drizzles has been set in the state
+   * 
+   */
   const get_drizzles = async () => {
       try{
 
@@ -99,10 +137,24 @@ const CustomerScreen = () => {
 
   }, [order['pizza-type']])
 
+  /**
+   * Sets the order details for an order.
+   * @param {string} name The name of the order detail to be set.
+   * @param {any} value The value to be set for the order detail.
+   * @returns{void}
+   */
   const setOrderDetails = (name, value) => {
     set_order({...order, [name]: value})
   }
 
+  /**
+   * Submits an order to the server.
+   * @memberof CustomerScreen
+   * @async
+   * @function submitOrder
+   * @returns {Promise<void>}
+   * @throws {Error}If there is an error submitting the order.
+   */
   const submitOrder = async () => {
     try {
       await fetch(`http://localhost:5000/transaction?` + new URLSearchParams({

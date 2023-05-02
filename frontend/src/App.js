@@ -23,10 +23,11 @@ import { useEffect } from 'react';
 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
+/**
+ * Renders the main application component that includes the routing for the screen.
+ * @returns {JSX.Element} The main application component to display all screen. Includes links for paths to each screen.
+ */
 function App() {
-
-
-
 
   return (
     <Router>

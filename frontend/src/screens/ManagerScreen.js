@@ -14,6 +14,11 @@ import { Xreport } from './components/Xreport';
 import GoogleTranslate from './components/GoogleTranslate';
 import { AddUpdateProducts } from './components/UpdateManager';
 
+/**
+ * A React component that displays the Manager screen with various reports and options
+ * @namespace ManagerScreen
+ * @component 
+ */
 const ManagerScreen = () => {
   return (  
     <Fragment>

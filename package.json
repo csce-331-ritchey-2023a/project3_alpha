@@ -9,6 +9,7 @@
     "build-client": "npm run build --prefix frontend",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
+
   },
   "keywords": [],
   "author": "chase",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
+    "jsdoc": "^4.0.2",
     "nodemon": "^2.0.22"
   }
 }
