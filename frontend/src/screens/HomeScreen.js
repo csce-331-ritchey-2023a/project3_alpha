@@ -68,7 +68,10 @@ const HomeScreen = () => {
    * @returns {JSX.Element} A JSX element that represents the home screen.
    */
   return (
-    <div className="homescreen">
+    <div className="homescreen bg-img" style={{
+      backgroundImage: "url(https://jooinn.com/images/dark-bricks-texture-5.jpg)",
+      
+    }}>
 
       <div id="header-container">
         <div id="sign-in-container">
@@ -93,11 +96,7 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      <img
-        className="bg-img"
-        src="https://jooinn.com/images/dark-bricks-texture-5.jpg"
-        alt="Background"
-      />
+      
 
       <Container fluid>
         <Row>

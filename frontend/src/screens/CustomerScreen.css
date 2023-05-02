@@ -4,11 +4,8 @@
     height: 110vh;
 }
 
-.Spin-n-stone-logo {
-    display: block;
-    margin: 0 auto;
-    position: flex;
-    top: 0;
+.Spin-n-stone-logo-customer {
+    margin-left: 400px;
     transform: scale(0.5);
 }
 

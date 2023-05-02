@@ -183,7 +183,7 @@ const CustomerScreen = () => {
       <Link to="/" className="link-style">               
             <h3>Return home</h3>            
       </Link>
-      <img src="https://i.ibb.co/LrJNtj1/white-spinnstone-logo.png" className="Spin-n-stone-logo" alt="logo"/>
+      <img src="https://i.ibb.co/LrJNtj1/white-spinnstone-logo.png" className="Spin-n-stone-logo-customer" alt="logo"/>
       <div className="d-flex justify-content-center">
         
         
