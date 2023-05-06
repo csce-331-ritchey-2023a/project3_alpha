@@ -151,6 +151,17 @@ const ServerScreen = () => {
    * @throws {Error}If there is an error submitting the order.
    */
   const submitOrder = async () => {
+    if (order["pizza-type"]=="1-topping" && order.topping1=="") {
+      alert("Incomplete Order: Please include a topping in customer order");
+    }
+    else if (order["pizza-type"]=="4-topping" && order.topping2=="") {
+      alert("Incomplete Order: Please include multiple toppings in customer order");
+    }
+    else if(order.sauce!="" && order.cheese!="" && order.drizzle!="" && order['payment-method']!="" && order["pizza-type"]!=""){
+      alert("Order Successfully Submitted!");
+    }else{
+      alert("Incomplete Order: Please select at least a pizza type, sauce, cheese, drizzle, and payment method");
+    }
     try {
       await fetch(`https://project3-alpha.onrender.com/transaction?` + new URLSearchParams({
         "pizza-type": order["pizza-type"],
