@@ -349,7 +349,7 @@ app.get('/update/:type/:name/:price/:amount', async (req, res) => {
 
 /**
  * Inserts an ingredient with a price/amount in the database.
- * @name get/update/:type/:name/:price/:amount
+ * @name get/insert/:type/:name/:price/:amount
  * @function
  * @memberof module:routers/users
  * @inner
@@ -386,6 +386,42 @@ app.get('/insert/:type/:name/:price/:amount', async (req, res) => {
     pool.query(`
       insert into ${type} (sauceid, amount, customerprice) VALUES('${name}', ${amount}, ${price});
     `)
+  }
+})
+
+/**
+ * Deletes an ingredient with a price/amount in the database.
+ * @name get/delete/:type/:name/:price/:amount
+ * @function
+ * @memberof module:routers/users
+ * @inner
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @throws {Error} If an error occurs while retrieving data from the database.
+ * @returns {JSON} Returns a JSON file with the new table's data.
+ */
+app.get('/delete/:type/:name/:price/:amount', async (req, res) => {
+  const type = req.params.type
+  const name = req.params.name
+
+  if (type == "cheeses") {
+    let  c_query = `DELETE from cheeses WHERE cheeseid='${name}';`
+    pool.query(c_query)
+  }
+
+  if (req.params.type == "drizzles") {
+    let  d_query = `DELETE from drizzles WHERE drizzleid='${name}';`
+    pool.query(d_query)
+  }
+
+  if (req.params.type == "toppings") {
+    let  t_query = `DELETE from toppings WHERE topping_id='${name}';`
+    pool.query(t_query)
+  }
+
+  if (req.params.type == "sauces") {
+    let  s_query = `DELETE from sauces WHERE sauceid='${name}';`
+    pool.query(s_query)
   }
 })
 

@@ -30,16 +30,18 @@ const AddUpdateProducts = () => {
         if (operation == "update") {
             await fetch(`http://localhost:5000/update/${type}/${name}/${price}/${amount}`)
         }
-        else {
+        else if (operation == "addnew") {
             await fetch(`http://localhost:5000/insert/${type}/${name}/${price}/${amount}`)
         }
-
+        else{
+            await fetch(`http://localhost:5000/delete/${type}/${name}/${price}/${amount}`)
+        }
         setIsSubmitted(true)
     }
 
     return (
         <div>
-            <h3>Update/Add Ingredients</h3>
+            <h3>Modify Ingredients Inventory</h3>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)}></input>
             <br />
@@ -62,8 +64,9 @@ const AddUpdateProducts = () => {
             </select>
             <label htmlFor="operation" value={operation}>Operation</label>
             <select id="operation" value={operation} onChange={e => setOperation(e.target.value)} defaultValue="">
-                <option value="addnew">Add New</option>
-                <option value="update">Update existing</option>
+                <option value="addnew">Add </option>
+                <option value="update">Update </option>
+                <option value="delete">Delete </option>
             </select>
             <button onClick={handleSubmit}>Submit</button>
             {(isSubmitted) ? <p>Submitted {name} {price} {amount} for the {type} category</p> : ''}
