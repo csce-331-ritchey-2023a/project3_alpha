@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 class GoogleTranslate extends Component {
     render() {
         return (
-            <div id="google_translate_element"></div>
+            <div id="google_translate_element">Google Translate</div>
           );
      }
 }
