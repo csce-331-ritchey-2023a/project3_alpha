@@ -26,10 +26,10 @@ const AddUpdateProducts = () => {
      */
     let handleSubmit = async () => {
         if (operation == "addnew") {
-            await fetch(`http://localhost:5000/update/${type}/${name}/${price}/${amount}`)
+            await fetch(`https://project3-alpha.onrender.com/update/${type}/${name}/${price}/${amount}`)
         }
         else {
-            await fetch(`http://localhost:5000/insert/${type}/${name}/${price}/${amount}`)
+            await fetch(`https://project3-alpha.onrender.com/insert/${type}/${name}/${price}/${amount}`)
         }
 
         setIsSubmitted(true)
